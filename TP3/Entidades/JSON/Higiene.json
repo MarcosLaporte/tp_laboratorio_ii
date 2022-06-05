@@ -1,0 +1,52 @@
+[
+  {
+    "Descripcion": "Jabon facial",
+    "Precio": 293.15,
+    "Tipo": 1
+  },
+  {
+    "Descripcion": "Jabon corporal",
+    "Precio": 809.57,
+    "Tipo": 1
+  },
+  {
+    "Descripcion": "Jabon abrasivo /exfoliante",
+    "Precio": 391.48,
+    "Tipo": 1
+  },
+  {
+    "Descripcion": "Jabon desodorante",
+    "Precio": 348.69,
+    "Tipo": 1
+  },
+  {
+    "Descripcion": "Jabon p/bebes y ninios",
+    "Precio": 1188.44,
+    "Tipo": 1
+  },
+  {
+    "Descripcion": "Jabon uso intimo",
+    "Precio": 1234.29,
+    "Tipo": 1
+  },
+  {
+    "Descripcion": "Jabon antibacterial",
+    "Precio": 1079.57,
+    "Tipo": 1
+  },
+  {
+    "Descripcion": "Shampoo",
+    "Precio": 627.72,
+    "Tipo": 1
+  },
+  {
+    "Descripcion": "Shampoo con acondicionador",
+    "Precio": 1006.82,
+    "Tipo": 1
+  },
+  {
+    "Descripcion": "Shampoo colorante",
+    "Precio": 735.87,
+    "Tipo": 1
+  }
+]
