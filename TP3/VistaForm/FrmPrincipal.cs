@@ -121,13 +121,23 @@ namespace VistaForm
         {
             try
             {
-                Farmacia<Cliente, Compra, Producto> clientesLeidos = Serializadora<Farmacia<Cliente, Compra, Producto>>.Leer_Json("Cliente");
-                //this.clientes = Serializadora<Farmacia<Cliente, Compra, Producto>>.Leer_Json("Cliente");
+                /*Farmacia<Cliente, Compra, Producto> clientesLeidos = Serializadora<Farmacia<Cliente, Compra, Producto>>.Leer_Json("Cliente");
 				foreach (Cliente item in clientesLeidos.ListaClientes)
 				{
-                    this.clientes += item;
-                    this.lBxClientes.Items.Add(item);
-				}
+					this.clientes += item;
+					this.lBxClientes.Items.Add(item);
+				}*/
+                Cliente cliente1 = new Cliente("lucas", "lopez", "11 5284-7986", "26558748");
+                Cliente cliente2 = new Cliente("juan", "galate", "11 4758-2404", "98254158");
+                Cliente cliente3 = new Cliente("martin", "rocha", "11 5474-4242", "26555898");
+                Cliente cliente4 = new Cliente("pepe", "muñoz", "11 1052-7985", "44879465");
+                List<Cliente> clientes = new List<Cliente>() { cliente1, cliente2, cliente3, cliente4 };
+
+				foreach (Cliente item in clientes)
+				{
+                    this.lBxClientes.Items.Add(item.Dni);
+					this.clientes += item;
+                }
 
                 this.btnHadrdcode.Enabled = false;
             }
