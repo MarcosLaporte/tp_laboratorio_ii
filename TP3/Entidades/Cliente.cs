@@ -1,140 +1,234 @@
-﻿using Entidades.Excepciones;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Entidades.Excepciones;
 
 namespace Entidades
 {
-    public class Cliente
-    {
-        private string nombre;
-        private string apellido;
-        private string telefono;
-        private string dni;
-        private float debe;
+	public class Cliente
+	{
+		private string nombre;
+		private string apellido;
+		private string telefono;
+		private ulong dni;
+		private float debe;
 
-        public Cliente(string nombre, string apellido, string telefono, string dni)
-        {
-            this.Nombre = nombre;
-            this.Apellido = apellido;
-            this.Telefono = telefono;
-            this.Dni = dni;
-            this.Debe = 0;
-        }
+		public Cliente()
+		{
 
-        #region Propiedades
-        public string Nombre
-        {
-            get { return this.nombre; }
-            set
-            {
-                if (value is not null)
-                {
-                    this.nombre = value;
-                }
-                else
-                {
-                    throw new NullReferenceException("El nombre no puede ser nulo.");
-                }
-            }
-        }
-        public string Apellido
-        {
-            get { return this.apellido; }
-            set
-            {
-                if (value is not null)
-                {
-                    this.apellido = value;
-                }
-                else
-                {
-                    throw new NullReferenceException("El apellido no puede ser nulo.");
-                }
-            }
-        }
-        public string Telefono
-        {
-            get { return this.telefono; }
-            set
-            {
-                if (value is not null)
-                {
-                    //if (/*formato == todo piola*/)
-                        this.telefono = value;
-                    //else
-                    //    throw new TelefonoInvalidoException();
-                }
-                else
-                {
-                    throw new NullReferenceException("El teléfono no puede ser nulo.");
-                }
-            }
-        }
-        public string Dni
-        {
-            get { return this.dni; }
-            set
-            {
-                string dniStr = value;
-                if (!String.IsNullOrEmpty(dniStr))
-                {
-                    this.dni = value;
-                }
-                else
-                {
-                    throw new NullReferenceException("El dni no puede ser nulo.");
-                }
-            }
-        }
-        public float Debe
-        {
-            get { return this.debe; }
-            set { this.debe = value; }
-        }
-        #endregion
+		}
+		public Cliente(string nombre, string apellido, string telefono, ulong dni)
+		{
+			this.Nombre = nombre;
+			this.Apellido = apellido;
+			this.Telefono = telefono;
+			this.Dni = dni;
+			this.Debe = 0;
+		}
 
-        private static string MostrarDatos(Cliente cliente)
-        {
-            StringBuilder sb = new StringBuilder();
+		#region Propiedades
+		public string Nombre
+		{
+			get { return this.nombre; }
+			set
+			{
+				if (!String.IsNullOrEmpty(value))
+				{
+					if (CadenaEsValida(value))
+					{
+						this.nombre = value;
+					}
+					else
+					{
+						throw new NombreInvalidoException("El nombre debe ser sólo letras.");
+					}
+				}
+				else
+				{
+					throw new NullReferenceException("El nombre no puede estar vacío.");
+				}
+			}
+		}
+		public string Apellido
+		{
+			get { return this.apellido; }
+			set
+			{
+				if (!String.IsNullOrEmpty(value))
+				{
+					if (CadenaEsValida(value))
+					{
+						this.apellido = value;
+					}
+					else
+					{
+						throw new NombreInvalidoException("El apellido debe ser sólo letras.");
+					}
+				}
+				else
+				{
+					throw new NullReferenceException("El apellido no puede estar vacío.");
+				}
+			}
+		}
+		public string Telefono
+		{
+			get { return this.telefono; }
+			set
+			{
+				if (!String.IsNullOrEmpty(value))
+				{
+					if (long.TryParse(value, out _))
+					{
+						this.telefono = value;
+					}
+					else
+					{
+					    throw new TelefonoInvalidoException("El teléfono debe ser sólo números.");
+					}
+				}
+				else
+				{
+					throw new NullReferenceException("El teléfono no puede estar vacío.");
+				}
+			}
+		}
+		public ulong Dni
+		{
+			get { return this.dni; }
+			set
+			{
+				if (value.ToString().Length < 7 || value.ToString().Length > 9)
+				{
+					throw new DniInvalidoException("El dni debe ser válido.");
+				}
+				else
+				{
+					this.dni = value;
+				}
+			}
+		}
+		public float Debe
+		{
+			get { return this.debe; }
+			set
+			{
+				if(value < 0)
+				{
+					this.debe = 0;
+					throw new DeudaInvalidaException("No puede existir una deuda negativa.");
+				}
+				else
+				{
+					this.debe = value;
+				}
+			}
+		}
+		#endregion
 
-            sb.AppendLine($"-DNI: {cliente.dni}.");
-            sb.AppendLine($"-Nombre: {cliente.nombre}.");
-            sb.AppendLine($"-Apellido: {cliente.apellido}.");
-            sb.AppendLine($"-Telefono: {cliente.telefono}.");
-            sb.AppendLine($"-Debe: {cliente.debe:C}.");
+		private static string MostrarDatos(Cliente cliente)
+		{
+			StringBuilder sb = new StringBuilder();
 
-            return sb.ToString();
-        }
+			sb.AppendLine($"-DNI: {cliente.dni}.");
+			sb.AppendLine($"-Nombre: {cliente.nombre}.");
+			sb.AppendLine($"-Apellido: {cliente.apellido}.");
+			sb.AppendLine($"-Telefono: {cliente.telefono}.");
+			sb.AppendLine($"-Debe: {cliente.debe:C}.");
 
-        public static bool operator ==(Cliente a, Cliente b)
-        {
-            bool ret = false;
-            if(a is not null && b is not null)
-            {
-                if(a.dni == b.dni)
-                {
-                    ret = true;
-                }
-            }
+			return sb.ToString();
+		}
 
-            return ret;
-        }
-        public static bool operator !=(Cliente a, Cliente b)
-        {
-            return !(a == b);
-        }
+		public static Cliente GetClientePorDni(List<Cliente> lista, ulong dni)
+		{
+			Cliente miCliente = null;
+			foreach (Cliente cliente in lista)
+			{
+				if (cliente.Dni == dni)
+				{
+					miCliente = cliente;
+					break;
+				}
+			}
 
-        public override bool Equals(object obj)
-        {
-            Cliente cliente = obj as Cliente;
-            return cliente is not null && cliente == this;
-        }
-        public override string ToString()
-        {
-            return MostrarDatos(this);
-        }
-    }
+			return miCliente;
+		}
+		public bool CadenaEsValida(string cadena)
+		{
+			bool ret = true;
+			foreach (char caracter in cadena)
+			{
+				if (!char.IsLetter(caracter))
+				{
+					ret = false;
+					break;
+				}
+			}
+
+			return ret;
+		}
+
+		public static bool operator ==(Cliente a, Cliente b)
+		{
+			bool ret = false;
+			if (a is not null && b is not null)
+			{
+				if (a.dni == b.dni)
+				{
+					ret = true;
+				}
+			}
+
+			return ret;
+		}
+		public static bool operator !=(Cliente a, Cliente b)
+		{
+			return !(a == b);
+		}
+		public static bool operator ==(List<Cliente> a, Cliente b)
+		{
+			bool ret = false;
+			if (a is not null && b is not null)
+			{
+				foreach (Cliente item in a)
+				{
+					if (item.Equals(b))
+					{
+						ret = true;
+						break;
+					}
+				}
+			}
+
+			return ret;
+		}
+		public static bool operator !=(List<Cliente> a, Cliente b)
+		{
+			return !(a == b);
+		}
+
+		public static List<Cliente> operator +(List<Cliente> a, Cliente b)
+		{
+			if (a != b)
+			{
+				a.Add(b);
+				Console.WriteLine("Agregado!");
+			}
+			else
+			{
+				Console.WriteLine("Ya existe.");
+			}
+
+			return a;
+		}
+		public override bool Equals(object obj)
+		{
+			Cliente cliente = obj as Cliente;
+			return cliente is not null && cliente == this;
+		}
+		public override string ToString()
+		{
+			return MostrarDatos(this);
+		}
+	}
 }

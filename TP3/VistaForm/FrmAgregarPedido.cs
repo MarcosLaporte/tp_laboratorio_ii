@@ -14,8 +14,9 @@ namespace VistaForm
 {
 	public partial class FrmAgregarPedido : Form
 	{
-		private Compra compraCreada;
-		private Farmacia<Cliente, Compra, Producto> productosDisponibles;
+		private Venta venta;
+		private List<Producto> productosDisponibles;
+		private List<Producto> carrito;
 		private FrmMontoSenia seniar;
 
 		private float precio = 0;
@@ -32,19 +33,25 @@ namespace VistaForm
             get { return this.cliente; }
             set { this.cliente = value; }
         }
-		public Farmacia<Cliente, Compra, Producto> ProductosDisponibles
+		public List<Producto> ProductosDisponibles
 		{
 			get { return this.productosDisponibles; }
 			set { this.productosDisponibles = value; }
 		}
-
-		public Compra CompraCreada
-        {
-            get { return this.compraCreada; }
-        }
+		public List<Producto> Carrito
+		{
+			get { return this.carrito; }
+			set { this.carrito = value; }
+		}
+		public Venta Venta
+		{
+			get { return this.venta; }
+		}
 
 		private void FrmAgregarPedido_Load(object sender, EventArgs e)
 		{
+			this.carrito = new List<Producto>();
+
 			this.cBxTipo.Items.Add(ETipo.Higiene);
 			this.cBxTipo.Items.Add(ETipo.Inyeccion);
 			this.cBxTipo.Items.Add(ETipo.Medicamento);
@@ -54,7 +61,7 @@ namespace VistaForm
 		{
 			this.cBxProducto.Items.Clear();
 
-			foreach (Producto item in productosDisponibles.ListaProductos)
+			foreach (Producto item in productosDisponibles)
 			{
 				if (this.cBxTipo.Text == "Medicamento" && item is Medicamento
 					|| this.cBxTipo.Text == "Inyeccion" && item is Inyeccion
@@ -73,7 +80,7 @@ namespace VistaForm
 				string stringId = FrmPrincipal.CortarStringEnCaracter(productoSeleccionado.ToString(), ':');
 				if (int.TryParse(stringId, out int id))
 				{
-					Producto producto = productosDisponibles.GetProductoPorId(productosDisponibles, id);
+					Producto producto = Producto.GetProductoPorId(productosDisponibles, id);
 					if (producto is not null)
 					{
 						this.lblPrecioUnidad.Text = $"{producto.Precio:C}";
@@ -84,51 +91,52 @@ namespace VistaForm
 
 		private void btnAgregar_Click(object sender, EventArgs e)
 		{
-			object productoSeleccionado = this.cBxProducto.SelectedItem;
-			if (productoSeleccionado is not null)
+			object item = this.cBxProducto.SelectedItem;
+			if (item is not null)
 			{
-				string stringId = FrmPrincipal.CortarStringEnCaracter(productoSeleccionado.ToString(), ':');
+				string stringId = FrmPrincipal.CortarStringEnCaracter(item.ToString(), ':');
 				if (int.TryParse(stringId, out int id))
 				{
-					Producto producto = productosDisponibles.GetProductoPorId(productosDisponibles, id);
-					if (producto is not null)
+					Producto productoElegido = Producto.GetProductoPorId(productosDisponibles, id);
+					if (productoElegido is not null)
 					{
-						this.precio += producto.Precio;
-						//producto.stock--
+						this.carrito.Add(productoElegido);
+						this.precio += productoElegido.Precio;
 						this.lblPrecioTotal.Text = $"{this.precio:C}";
-						this.rTBxPedido.Text += producto.ToString();
+						this.rTBxPedido.Text += productoElegido.ToString();
 						this.rTBxPedido.Text += "-----------------\n";
 					}
-					else
-					{
-						//throw new IdProductoNoExisteException();
-					}
-				}
-				else
-				{
-					//throw new IdProductoInvalidoException();
 				}
 			}
 			else
 			{
-				MessageBox.Show("Seleccione un producto.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Debe seleccionar un producto.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
 		private void btnRePedido_Click(object sender, EventArgs e)
 		{
-			this.seniar = new FrmMontoSenia();
-			seniar.ShowDialog();
-			this.senia = seniar.SeniaCompra;
-
-			if (this.senia == -1)
-				this.senia = this.precio;
-
-			if(seniar.DialogResult == DialogResult.OK)
+			if (this.carrito.Count != 0)
 			{
-				this.cliente.Debe += this.precio - this.senia;
-				this.compraCreada = new Compra(this.precio, this.senia, this.cliente);
-				this.DialogResult = DialogResult.OK;
+				this.seniar = new FrmMontoSenia();
+				this.seniar.PrecioVenta = this.precio;
+
+				seniar.ShowDialog();
+				this.senia = seniar.SeniaVenta;
+
+				if (this.senia == -1)
+					this.senia = this.precio;
+
+				if (seniar.DialogResult == DialogResult.OK)
+				{
+					this.cliente.Debe += this.precio - this.senia;
+					this.venta = new Venta(this.precio, this.senia, this.cliente, this.carrito);
+					this.DialogResult = DialogResult.OK;
+				}
+			}
+			else
+			{
+				MessageBox.Show("Debe agregar al menos un producto.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 

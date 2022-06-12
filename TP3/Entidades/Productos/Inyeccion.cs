@@ -11,6 +11,10 @@ namespace Entidades.Productos
         private int cc;
         private EUso uso;
 
+		public Inyeccion()
+		{
+
+		}
         public Inyeccion(string descripcion, float precio, int medida, EUso uso)
             : base(descripcion, precio, ETipo.Inyeccion)
         {

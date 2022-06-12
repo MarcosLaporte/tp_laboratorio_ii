@@ -8,6 +8,10 @@ namespace Entidades.Productos
 {
     public class Higiene : Producto
     {
+		public Higiene()
+		{
+
+		}
         public Higiene(string descripcion, float precio)
             : base(descripcion, precio, ETipo.Higiene) { }
 

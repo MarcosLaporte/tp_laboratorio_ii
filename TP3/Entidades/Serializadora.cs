@@ -4,25 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using System.Text.Json;
-
-
+using System.Xml.Serialization;
 
 namespace Entidades
 {
 	public class Serializadora<T>
 	{
-        static string ruta;
+		static string ruta;
 
 		static Serializadora()
 		{
-            //ruta = AppDomain.CurrentDomain.BaseDirectory;
-			ruta = @"../../../../Entidades/JSON";
+			ruta = @"../../../../Entidades/Archivos";
 		}
 
-		public static void Escribir_JSON(T datos, string archivo)
+		public static void Escribir(T datos, string archivo)
 		{
-			string completa = $@"{ruta}\{archivo}.json";
+			string completa = $@"{ruta}\{archivo}.xml";
 
 			try
 			{
@@ -31,17 +28,20 @@ namespace Entidades
 					Directory.CreateDirectory(ruta);
 				}
 
-				string objetoJson = JsonSerializer.Serialize(datos);
-				File.AppendAllText(completa, objetoJson);
+				using (StreamWriter sw = new StreamWriter(completa))
+				{
+					XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+					xmlSerializer.Serialize(sw, datos);
+				}
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				throw new Exception($"Error en el archivo {completa}.");
 			}
 		}
-		public static T Leer_Json(string nombre)
+		public static T Leer(string nombre)
 		{
-			string archivo = string.Empty;
+			string archivo = null;
 
 			T datos = default;
 
@@ -62,19 +62,17 @@ namespace Entidades
 
 					if (archivo is not null)
 					{
-						string archivoJson = File.ReadAllText(archivo);
-
-						datos = JsonSerializer.Deserialize<T>(archivoJson);
+						using (StreamReader sr = new StreamReader(archivo))
+						{
+							XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+							datos = (T)xmlSerializer.Deserialize(sr);
+						}
 					}
-				}
-				else
-				{
-					throw new Exception("No existe la carpeta.");
 				}
 
 				return datos;
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				throw new Exception($"Error en el archivo {archivo}.");
 			}

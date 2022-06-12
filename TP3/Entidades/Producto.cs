@@ -1,19 +1,28 @@
-﻿using System;
+﻿using Entidades.Productos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Entidades
 {
+    [XmlInclude(typeof(Higiene))]
+    [XmlInclude(typeof(Medicamento))]
+    [XmlInclude(typeof(Inyeccion))]
     public abstract class Producto
     {
         private static int bancoIds;
-        private readonly int id;
+        private int id;
         private string descripcion;
         private float precio;
         private ETipo tipo;
 
+		public Producto()
+		{
+
+		}
         static Producto()
         {
             bancoIds = 1;
@@ -30,6 +39,7 @@ namespace Entidades
         public int Id
         {
             get { return this.id; }
+			set { this.id = value; }
         }
         public string Descripcion
         {
@@ -56,6 +66,21 @@ namespace Entidades
             sb.AppendLine($"Precio: {p.precio:C}.");
 
             return sb.ToString();
+        }
+
+        public static Producto GetProductoPorId(List<Producto> lista, int id)
+        {
+            Producto miProducto = null;
+            foreach (Producto producto in lista)
+            {
+                if (producto.Id == id)
+                {
+                    miProducto = producto;
+                    break;
+                }
+            }
+
+            return miProducto;
         }
     }
 }

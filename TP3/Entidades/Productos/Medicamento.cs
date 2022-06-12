@@ -11,6 +11,10 @@ namespace Entidades.Productos
         private int mg;
         private EUso uso;
 
+		public Medicamento()
+		{
+
+		}
         public Medicamento(string descripcion, float precio, int mg, EUso uso)
             : base(descripcion, precio, ETipo.Medicamento)
         {

@@ -12,53 +12,66 @@ namespace VistaForm
 {
     public partial class FrmMontoSenia : Form
     {
-        private float seniaCompra;
+        private float seniaVenta;
+        private float precioVenta;
 
         public FrmMontoSenia()
         {
             InitializeComponent();
         }
 
-        public float SeniaCompra
+        private void FrmMontoSenia_Load(object sender, EventArgs e)
         {
-            get { return this.seniaCompra; }
+            this.rBtnCompleto.Text += $" ({this.precioVenta:C})";
         }
+
+        public float SeniaVenta
+        {
+            get { return this.seniaVenta; }
+        }
+        public float PrecioVenta
+		{
+			set { this.precioVenta = value; }
+		}
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (rBtnCompleto.Checked == false && rBtnNada.Checked == false
-                && rBtnPersonalizado.Checked == false)
+            bool valorOk = true;
+            float senia = -1;
+			if (rBtnCompleto.Checked)
             {
-                MessageBox.Show("ERROR!", "Debe seleccionar una casilla.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                senia = -1;
             }
-            else
+            else if (rBtnNada.Checked)
             {
-                if (rBtnCompleto.Checked)
+                senia = 0;
+            }
+            else if (rBtnPersonalizado.Checked)
+            {
+                if(!float.TryParse(this.tBxSenia.Text, out float seniaIndicada) || seniaIndicada < 0)
                 {
-                    //rBtnNada.Checked = false;
-                    //rBtnPersonalizado.Checked = false;
-                    this.seniaCompra = -1;
+                    MessageBox.Show("Ingrese un valor válido.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    valorOk = false;
                 }
-                else if (rBtnNada.Checked)
-                {
-                    //rBtnCompleto.Checked = false;
-                    //rBtnPersonalizado.Checked = false;
-                    this.seniaCompra = 0;
+                else if(seniaIndicada > precioVenta)
+				{
+                    MessageBox.Show("No puede abonar de más.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    valorOk = false;
                 }
                 else
                 {
-                    //rBtnCompleto.Checked = false;
-                    //rBtnPersonalizado.Checked = false;
-                    if(!float.TryParse(this.tBxSenia.Text, out float senia) || senia <= 0)
-                    {
-                        MessageBox.Show("ERROR!", "Ingrese un valor válido.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        this.seniaCompra = senia;
-                    }
+                    senia = seniaIndicada;
                 }
+			}
+			else
+			{
+                MessageBox.Show("ERROR!", "Debe seleccionar una casilla.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                valorOk = false;
+            }
 
+            if (valorOk)
+			{
+                this.seniaVenta = senia;
                 this.DialogResult = DialogResult.OK;
             }
         }
@@ -67,5 +80,6 @@ namespace VistaForm
         {
             this.Close();
         }
-    }
+
+	}
 }
