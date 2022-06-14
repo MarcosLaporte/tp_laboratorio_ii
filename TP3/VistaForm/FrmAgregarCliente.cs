@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using Entidades.Excepciones;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace VistaForm
@@ -8,6 +9,7 @@ namespace VistaForm
 	public partial class FrmAgregarCliente : Form
 	{
 		private Cliente clienteCreado;
+		private List<Cliente> clientesExistentes;
 		public FrmAgregarCliente()
 		{
 			InitializeComponent();
@@ -16,7 +18,11 @@ namespace VistaForm
 		public Cliente ClienteCreado
 		{
 			get { return this.clienteCreado; }
-			set { clienteCreado = value; }
+			set { this.clienteCreado = value; }
+		}
+		public List<Cliente> ClientesExistentes
+		{
+			set { this.clientesExistentes = value; }
 		}
 
 		private void btnAgregar_Click(object sender, EventArgs e)
@@ -28,16 +34,24 @@ namespace VistaForm
 			try
 			{
 				ulong dni = ulong.Parse(this.tBxDni.Text);
-				this.ClienteCreado = new Cliente(nombre, apellido, telefono, dni);
-				this.DialogResult = DialogResult.OK;
+				Cliente posibleClienteExistente = Cliente.GetClientePorDni(this.clientesExistentes, dni);
+				if(posibleClienteExistente == null)
+				{
+					this.ClienteCreado = new Cliente(nombre, apellido, telefono, dni);
+					this.DialogResult = DialogResult.OK;
+				}
+				else
+				{
+					MessageBox.Show("Este DNI ya existe! Reingrese.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
 			}
 			catch (NullReferenceException)
 			{
 				MessageBox.Show("Ningún campo puede quedar vacío. Reingrese.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-			catch (ClienteInvalidoException)
+			catch (ClienteInvalidoException ex)
 			{
-				MessageBox.Show("Los datos no son válidos. Reingrese.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show($"Los datos no son válidos. {ex.Message} Reingrese.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			catch (FormatException)
 			{

@@ -29,6 +29,7 @@ namespace VistaForm
         /// </summary>
         private void InitializeComponent()
         {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
 			this.btnAgregarCliente = new System.Windows.Forms.Button();
 			this.btnAgregarPedido = new System.Windows.Forms.Button();
 			this.btnBorrarCliente = new System.Windows.Forms.Button();
@@ -177,12 +178,13 @@ namespace VistaForm
 			this.Controls.Add(this.btnAgregarPedido);
 			this.Controls.Add(this.btnAgregarCliente);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FrmPrincipal";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "FrmPrincipal";
+			this.Text = "Mi Farmacia";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPrincipal_FormClosing);
 			this.Load += new System.EventHandler(this.FrmPrincipal_Load);
 			this.ResumeLayout(false);

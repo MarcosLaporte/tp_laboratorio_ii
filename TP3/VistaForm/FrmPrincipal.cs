@@ -64,14 +64,17 @@ namespace VistaForm
 		private void btnAgregarCliente_Click(object sender, EventArgs e)
 		{
 			this.formAgregarCliente = new FrmAgregarCliente();
+			this.formAgregarCliente.ClientesExistentes = this.clientes;
 			formAgregarCliente.ShowDialog();
 
 			if (formAgregarCliente.DialogResult == DialogResult.OK)
 			{
 				Cliente cliente = formAgregarCliente.ClienteCreado;
 
-				this.clientes += cliente;
-				this.lBxClientes.Items.Add(cliente.Dni);
+				if(Cliente.AgregarCliente(ref clientes, cliente))
+				{
+					this.lBxClientes.Items.Add(cliente.Dni);
+				}
 			}
 		}
 
@@ -81,7 +84,6 @@ namespace VistaForm
 			if (item is not null)
 			{
 				string stringDni = item.ToString();
-				stringDni = stringDni.Trim(new char[] { ' ', '.', ',', '-' });
 				Cliente clienteElegido = Cliente.GetClientePorDni(clientes, ulong.Parse(stringDni));
 
 				if (clienteElegido is null)
@@ -102,7 +104,6 @@ namespace VistaForm
 			if (item is not null)
 			{
 				string stringDni = item.ToString();
-				stringDni = stringDni.Trim(new char[] { ' ', '.', ',', '-' });
 				Cliente clienteElegido = Cliente.GetClientePorDni(clientes, ulong.Parse(stringDni));
 
 				if (clienteElegido is not null)
@@ -146,7 +147,6 @@ namespace VistaForm
 			if (item is not null)
 			{
 				string stringDni = item.ToString();
-				stringDni = stringDni.Trim(new char[] { ' ', '.', ',', '-' });
 				Cliente cliente = Cliente.GetClientePorDni(clientes, ulong.Parse(stringDni));
 
 				if (cliente is not null)
@@ -177,7 +177,6 @@ namespace VistaForm
 			if (item is not null)
 			{
 				string stringDni = item.ToString();
-				stringDni = stringDni.Trim(new char[] { ' ', '.', ',', '-' });
 				Cliente cliente = Cliente.GetClientePorDni(clientes, ulong.Parse(stringDni));
 
 				if (cliente is not null)

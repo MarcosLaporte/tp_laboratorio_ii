@@ -34,7 +34,7 @@ namespace Entidades
 			{
 				if (!String.IsNullOrEmpty(value))
 				{
-					if (CadenaEsValida(value))
+					if (Cliente.CadenaEsValida(value))
 					{
 						this.nombre = value;
 					}
@@ -56,7 +56,7 @@ namespace Entidades
 			{
 				if (!String.IsNullOrEmpty(value))
 				{
-					if (CadenaEsValida(value))
+					if (Cliente.CadenaEsValida(value))
 					{
 						this.apellido = value;
 					}
@@ -78,9 +78,17 @@ namespace Entidades
 			{
 				if (!String.IsNullOrEmpty(value))
 				{
+					
 					if (long.TryParse(value, out _))
 					{
-						this.telefono = value;
+						if(value.Length < 3 || value.Length > 15)
+						{
+							throw new TelefonoInvalidoException("El teléfono debe tener entre 3 y 15 dígitos numéricos.");
+						}
+						else
+						{
+							this.telefono = value;
+						}
 					}
 					else
 					{
@@ -100,7 +108,7 @@ namespace Entidades
 			{
 				if (value.ToString().Length < 7 || value.ToString().Length > 9)
 				{
-					throw new DniInvalidoException("El dni debe ser válido.");
+					throw new DniInvalidoException("El DNI debe tener entre 7 y 9 números.");
 				}
 				else
 				{
@@ -153,7 +161,7 @@ namespace Entidades
 
 			return miCliente;
 		}
-		public bool CadenaEsValida(string cadena)
+		public static bool CadenaEsValida(string cadena)
 		{
 			bool ret = true;
 			foreach (char caracter in cadena)
@@ -166,6 +174,19 @@ namespace Entidades
 			}
 
 			return ret;
+		}
+
+		public static bool AgregarCliente(ref List<Cliente> a, Cliente b)
+		{
+			if (a != b)
+			{
+				a.Add(b);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		public static bool operator ==(Cliente a, Cliente b)
@@ -207,20 +228,6 @@ namespace Entidades
 			return !(a == b);
 		}
 
-		public static List<Cliente> operator +(List<Cliente> a, Cliente b)
-		{
-			if (a != b)
-			{
-				a.Add(b);
-				Console.WriteLine("Agregado!");
-			}
-			else
-			{
-				Console.WriteLine("Ya existe.");
-			}
-
-			return a;
-		}
 		public override bool Equals(object obj)
 		{
 			Cliente cliente = obj as Cliente;
