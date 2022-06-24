@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfVenta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Venta>
+    <Precio>1439.01</Precio>
+    <Senia>0</Senia>
+    <Cliente>
+      <Nombre>Fredericka</Nombre>
+      <Apellido>Smith</Apellido>
+      <Telefono>9283758890</Telefono>
+      <Dni>27981300</Dni>
+      <Debe>0</Debe>
+    </Cliente>
+    <Productos>
+      <Producto xsi:type="Medicamento">
+        <Id>16</Id>
+        <Descripcion>Calendula Officinalis</Descripcion>
+        <Precio>1439.01</Precio>
+        <Tipo>Medicamento</Tipo>
+        <Mg>9</Mg>
+        <Uso>Antialergico</Uso>
+      </Producto>
+    </Productos>
+  </Venta>
+  <Venta>
+    <Precio>4972.79</Precio>
+    <Senia>4972.79</Senia>
+    <Cliente>
+      <Nombre>Fredericka</Nombre>
+      <Apellido>Smith</Apellido>
+      <Telefono>9283758890</Telefono>
+      <Dni>27981300</Dni>
+      <Debe>0</Debe>
+    </Cliente>
+    <Productos>
+      <Producto xsi:type="Higiene">
+        <Id>2</Id>
+        <Descripcion>Jabon corporal</Descripcion>
+        <Precio>809.57</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>8</Id>
+        <Descripcion>Shampoo</Descripcion>
+        <Precio>627.72</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>9</Id>
+        <Descripcion>Shampoo con acondicionador</Descripcion>
+        <Precio>1006.82</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Medicamento">
+        <Id>12</Id>
+        <Descripcion>SALICYLIC ACID</Descripcion>
+        <Precio>2528.68</Precio>
+        <Tipo>Medicamento</Tipo>
+        <Mg>12</Mg>
+        <Uso>Antibiotico</Uso>
+      </Producto>
+    </Productos>
+  </Venta>
+  <Venta>
+    <Precio>4993.4297</Precio>
+    <Senia>75</Senia>
+    <Cliente>
+      <Nombre>Cosimo</Nombre>
+      <Apellido>Makiver</Apellido>
+      <Telefono>5345408117</Telefono>
+      <Dni>58135220</Dni>
+      <Debe>4918.4297</Debe>
+    </Cliente>
+    <Productos>
+      <Producto xsi:type="Medicamento">
+        <Id>17</Id>
+        <Descripcion>ceftriaxone</Descripcion>
+        <Precio>2510.25</Precio>
+        <Tipo>Medicamento</Tipo>
+        <Mg>15</Mg>
+        <Uso>Antibiotico</Uso>
+      </Producto>
+      <Producto xsi:type="Medicamento">
+        <Id>19</Id>
+        <Descripcion>Clonidine Hydrochloride</Descripcion>
+        <Precio>1044.17</Precio>
+        <Tipo>Medicamento</Tipo>
+        <Mg>6</Mg>
+        <Uso>Analgesico</Uso>
+      </Producto>
+      <Producto xsi:type="Medicamento">
+        <Id>16</Id>
+        <Descripcion>Calendula Officinalis</Descripcion>
+        <Precio>1439.01</Precio>
+        <Tipo>Medicamento</Tipo>
+        <Mg>9</Mg>
+        <Uso>Antialergico</Uso>
+      </Producto>
+    </Productos>
+  </Venta>
+  <Venta>
+    <Precio>5233.49</Precio>
+    <Senia>1000</Senia>
+    <Cliente>
+      <Nombre>Karney</Nombre>
+      <Apellido>Latta</Apellido>
+      <Telefono>4781583080</Telefono>
+      <Dni>28818884</Dni>
+      <Debe>4233.49</Debe>
+    </Cliente>
+    <Productos>
+      <Producto xsi:type="Medicamento">
+        <Id>22</Id>
+        <Descripcion>Sertraline Hydrochloride</Descripcion>
+        <Precio>2937.22</Precio>
+        <Tipo>Medicamento</Tipo>
+        <Mg>12</Mg>
+        <Uso>Antibiotico</Uso>
+      </Producto>
+      <Producto xsi:type="Medicamento">
+        <Id>18</Id>
+        <Descripcion>Cat Hair, Standardized</Descripcion>
+        <Precio>2296.27</Precio>
+        <Tipo>Medicamento</Tipo>
+        <Mg>13</Mg>
+        <Uso>Antialergico</Uso>
+      </Producto>
+    </Productos>
+  </Venta>
+</ArrayOfVenta>

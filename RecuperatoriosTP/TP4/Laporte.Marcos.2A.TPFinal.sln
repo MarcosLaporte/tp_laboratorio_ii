@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades\Entidades.csproj", "{37095938-E1F4-4C43-B7D9-96B4696CDBEE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{3826C99B-CC21-4B9E-A133-A199227B5671}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VistaForm", "VistaForm\VistaForm.csproj", "{368EE1FF-EAA4-48AB-8391-97A07A4AB4B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37095938-E1F4-4C43-B7D9-96B4696CDBEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37095938-E1F4-4C43-B7D9-96B4696CDBEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37095938-E1F4-4C43-B7D9-96B4696CDBEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37095938-E1F4-4C43-B7D9-96B4696CDBEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3826C99B-CC21-4B9E-A133-A199227B5671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3826C99B-CC21-4B9E-A133-A199227B5671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3826C99B-CC21-4B9E-A133-A199227B5671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3826C99B-CC21-4B9E-A133-A199227B5671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{368EE1FF-EAA4-48AB-8391-97A07A4AB4B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{368EE1FF-EAA4-48AB-8391-97A07A4AB4B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{368EE1FF-EAA4-48AB-8391-97A07A4AB4B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{368EE1FF-EAA4-48AB-8391-97A07A4AB4B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F4262CE-21C9-491A-BA2B-132E0CD463CD}
+	EndGlobalSection
+EndGlobal
