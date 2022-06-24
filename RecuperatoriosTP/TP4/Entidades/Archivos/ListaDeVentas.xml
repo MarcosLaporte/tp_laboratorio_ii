@@ -3,13 +3,7 @@
   <Venta>
     <Precio>1439.01</Precio>
     <Senia>0</Senia>
-    <Cliente>
-      <Nombre>Fredericka</Nombre>
-      <Apellido>Smith</Apellido>
-      <Telefono>9283758890</Telefono>
-      <Dni>27981300</Dni>
-      <Debe>0</Debe>
-    </Cliente>
+    <DniCliente>27981300</DniCliente>
     <Productos>
       <Producto xsi:type="Medicamento">
         <Id>16</Id>
@@ -24,13 +18,7 @@
   <Venta>
     <Precio>4972.79</Precio>
     <Senia>4972.79</Senia>
-    <Cliente>
-      <Nombre>Fredericka</Nombre>
-      <Apellido>Smith</Apellido>
-      <Telefono>9283758890</Telefono>
-      <Dni>27981300</Dni>
-      <Debe>0</Debe>
-    </Cliente>
+    <DniCliente>27981300</DniCliente>
     <Productos>
       <Producto xsi:type="Higiene">
         <Id>2</Id>
@@ -63,13 +51,7 @@
   <Venta>
     <Precio>4993.4297</Precio>
     <Senia>75</Senia>
-    <Cliente>
-      <Nombre>Cosimo</Nombre>
-      <Apellido>Makiver</Apellido>
-      <Telefono>5345408117</Telefono>
-      <Dni>58135220</Dni>
-      <Debe>4918.4297</Debe>
-    </Cliente>
+    <DniCliente>58135220</DniCliente>
     <Productos>
       <Producto xsi:type="Medicamento">
         <Id>17</Id>
@@ -100,13 +82,7 @@
   <Venta>
     <Precio>5233.49</Precio>
     <Senia>1000</Senia>
-    <Cliente>
-      <Nombre>Karney</Nombre>
-      <Apellido>Latta</Apellido>
-      <Telefono>4781583080</Telefono>
-      <Dni>28818884</Dni>
-      <Debe>4233.49</Debe>
-    </Cliente>
+    <DniCliente>28818884</DniCliente>
     <Productos>
       <Producto xsi:type="Medicamento">
         <Id>22</Id>

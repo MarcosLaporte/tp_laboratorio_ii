@@ -11,18 +11,18 @@ namespace Entidades
     {
         private float precio;
         private float senia;
-        private Cliente cliente;
+        private ulong dniCliente;
         private List<Producto> productos;
 
 		public Venta()
 		{
 
 		}
-        public Venta(float precio, float senia, Cliente cliente, List<Producto> productos) : this()
+        public Venta(float precio, float senia, ulong dniCliente, List<Producto> productos) : this()
         {
             this.Precio = precio;
             this.Senia = senia;
-            this.Cliente = cliente;
+            this.DniCliente = dniCliente;
             this.Productos = productos;
         }
 
@@ -37,10 +37,10 @@ namespace Entidades
 			get { return this.senia; }
 			set { this.senia = value; }
 		}
-        public Cliente Cliente
+        public ulong DniCliente
         {
-            get { return this.cliente; }
-			set { this.cliente = value; }
+            get { return this.dniCliente; }
+			set { this.dniCliente = value; }
         }
         public List<Producto> Productos
 		{
@@ -49,11 +49,11 @@ namespace Entidades
 		}
         #endregion
 
-        public string MostrarDatos(Venta venta)
+        public string MostrarDatos(Venta venta, Cliente cliente)
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"A nombre de {venta.cliente.Apellido}, {venta.cliente.Nombre}.");
+            sb.AppendLine($"A nombre de {cliente.Apellido}, {cliente.Nombre}.");
             sb.AppendLine($"Precio total: {venta.precio:C}.");
             sb.AppendLine($"Pagó: {venta.senia:C}.");
             sb.AppendLine($"\nProductos comprados:");

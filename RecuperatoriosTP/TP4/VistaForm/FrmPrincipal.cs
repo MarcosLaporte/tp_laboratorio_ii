@@ -36,14 +36,9 @@ namespace VistaForm
 			this.productos = Serializadora<List<Producto>>.Leer("ListaDeProductos");
 			this.ventas = Serializadora<List<Venta>>.Leer("ListaDeVentas");
 
-			foreach (Cliente item in this.clientes)
-			{
-				this.lBxClientes.Items.Add(item.Dni);
-			}
-			foreach (Venta item in this.ventas)
-			{
-				this.lBxVentas.Items.Add(item.MostrarDatos(item));
-			}
+			this.clientes.ForEach((item) => this.lBxClientes.Items.Add(item.Dni));
+			this.ventas.ForEach((item) => this.lBxVentas.Items.Add(item.MostrarDatos(item,
+										Cliente.GetClientePorDni(this.clientes, item.DniCliente))));
 		}
 		private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -117,8 +112,9 @@ namespace VistaForm
 					if (formAgregarPedido.DialogResult == DialogResult.OK)
 					{
 						Venta nuevaVenta = formAgregarPedido.Venta;
+						Cliente clienteDeVenta = Cliente.GetClientePorDni(this.clientes, formAgregarPedido.Cliente.Dni);
 						this.ventas.Add(nuevaVenta);
-						this.lBxVentas.Items.Add(nuevaVenta.MostrarDatos(nuevaVenta));
+						this.lBxVentas.Items.Add(nuevaVenta.MostrarDatos(nuevaVenta, clienteDeVenta));
 					}
 				}
 				else

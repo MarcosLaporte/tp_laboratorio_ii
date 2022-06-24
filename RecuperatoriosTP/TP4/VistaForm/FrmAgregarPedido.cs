@@ -130,7 +130,7 @@ namespace VistaForm
 				if (seniar.DialogResult == DialogResult.OK)
 				{
 					this.cliente.Debe += this.precio - this.senia;
-					this.venta = new Venta(this.precio, this.senia, this.cliente, this.carrito);
+					this.venta = new Venta(this.precio, this.senia, this.cliente.Dni, this.carrito);
 					this.DialogResult = DialogResult.OK;
 				}
 			}
