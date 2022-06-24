@@ -39,7 +39,7 @@ namespace Entidades.ADOs
 					string apellido = dataReader.GetString(1);
 					string telefono = dataReader.GetString(2);
 					ulong dni = (ulong)dataReader.GetInt32(3);
-					float debe = dataReader.GetFloat(4);
+					float debe = (float)dataReader.GetDouble(4);
 
 					clientes.Add(new Cliente(nombre, apellido, telefono, dni, debe));
 				}
@@ -69,7 +69,7 @@ namespace Entidades.ADOs
 				comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
 				comando.Parameters.AddWithValue("@apellido", cliente.Apellido);
 				comando.Parameters.AddWithValue("@telefono", cliente.Telefono);
-				comando.Parameters.AddWithValue("@dni", cliente.Dni);
+				comando.Parameters.AddWithValue("@dni", (int)cliente.Dni);
 				comando.Parameters.AddWithValue("@debe", cliente.Debe);
 
 				conexion.Open();

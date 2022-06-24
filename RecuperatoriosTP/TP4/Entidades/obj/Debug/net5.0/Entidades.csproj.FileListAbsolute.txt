@@ -45,3 +45,4 @@ C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laborator
 C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\Entidades\obj\Debug\net5.0\Entidades.dll
 C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\Entidades\obj\Debug\net5.0\ref\Entidades.dll
 C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\Entidades\obj\Debug\net5.0\Entidades.pdb
+C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\Entidades\obj\Debug\net5.0\Entidades.csproj.AssemblyReference.cache

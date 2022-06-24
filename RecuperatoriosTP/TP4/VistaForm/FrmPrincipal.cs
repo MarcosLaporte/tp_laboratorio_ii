@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.ADOs;
 using Entidades.Excepciones;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,9 @@ namespace VistaForm
 
 			try
 			{
-				this.clientes = Serializadora<List<Cliente>>.Leer("ListaDeClientes");
+				//this.clientes = Serializadora<List<Cliente>>.Leer("ListaDeClientes");
+				this.clientes = ClienteADO.ObtenerTodos();
+
 			}
 			catch (ClienteInvalidoException)
 			{
@@ -33,7 +36,9 @@ namespace VistaForm
 				this.clientes = new List<Cliente>();
 			}
 
-			this.productos = Serializadora<List<Producto>>.Leer("ListaDeProductos");
+			//this.productos = Serializadora<List<Producto>>.Leer("ListaDeProductos");
+			this.productos = ProductoADO.ObtenerTodos();
+
 			this.ventas = Serializadora<List<Venta>>.Leer("ListaDeVentas");
 
 			this.clientes.ForEach((item) => this.lBxClientes.Items.Add(item.Dni));
@@ -51,8 +56,9 @@ namespace VistaForm
 			}
 			else if(res == DialogResult.Yes)
 			{
+
 				Serializadora<List<Cliente>>.Escribir(this.clientes, "ListaDeClientes");
-				Serializadora<List<Venta>>.Escribir(ventas, "ListaDeVentas");
+				Serializadora<List<Venta>>.Escribir(this.ventas, "ListaDeVentas");
 			}
 		}
 

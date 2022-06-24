@@ -1,67 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfProducto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Producto xsi:type="Medicamento">
+  	<Descripcion>Cat Hair, Standardized</Descripcion>
+  	<Precio>2296.27</Precio>
+  	<Tipo>Medicamento</Tipo>
+  	<Mg>13</Mg>
+  	<Uso>Antialergico</Uso>
+  </Producto>
   <Producto xsi:type="Higiene">
-    <Id>1</Id>
     <Descripcion>Jabon facial</Descripcion>
     <Precio>293.15</Precio>
     <Tipo>Higiene</Tipo>
   </Producto>
   <Producto xsi:type="Higiene">
-    <Id>2</Id>
     <Descripcion>Jabon corporal</Descripcion>
     <Precio>809.57</Precio>
     <Tipo>Higiene</Tipo>
   </Producto>
   <Producto xsi:type="Higiene">
-    <Id>3</Id>
     <Descripcion>Jabon abrasivo /exfoliante</Descripcion>
     <Precio>391.48</Precio>
     <Tipo>Higiene</Tipo>
   </Producto>
   <Producto xsi:type="Higiene">
-    <Id>4</Id>
     <Descripcion>Jabon desodorante</Descripcion>
     <Precio>348.69</Precio>
     <Tipo>Higiene</Tipo>
   </Producto>
   <Producto xsi:type="Higiene">
-    <Id>5</Id>
     <Descripcion>Jabon p/bebes y ninios</Descripcion>
     <Precio>1188.44</Precio>
     <Tipo>Higiene</Tipo>
   </Producto>
   <Producto xsi:type="Higiene">
-    <Id>6</Id>
     <Descripcion>Jabon uso intimo</Descripcion>
     <Precio>1234.29</Precio>
     <Tipo>Higiene</Tipo>
   </Producto>
   <Producto xsi:type="Higiene">
-    <Id>7</Id>
     <Descripcion>Jabon antibacterial</Descripcion>
     <Precio>1079.57</Precio>
     <Tipo>Higiene</Tipo>
   </Producto>
   <Producto xsi:type="Higiene">
-    <Id>8</Id>
     <Descripcion>Shampoo</Descripcion>
     <Precio>627.72</Precio>
     <Tipo>Higiene</Tipo>
   </Producto>
   <Producto xsi:type="Higiene">
-    <Id>9</Id>
     <Descripcion>Shampoo con acondicionador</Descripcion>
     <Precio>1006.82</Precio>
     <Tipo>Higiene</Tipo>
   </Producto>
   <Producto xsi:type="Higiene">
-    <Id>10</Id>
     <Descripcion>Shampoo colorante</Descripcion>
     <Precio>735.87</Precio>
     <Tipo>Higiene</Tipo>
   </Producto>
   <Producto xsi:type="Medicamento">
-    <Id>11</Id>
     <Descripcion>Progesterone</Descripcion>
     <Precio>2941.52</Precio>
     <Tipo>Medicamento</Tipo>
@@ -69,7 +65,6 @@
     <Uso>Antibiotico</Uso>
   </Producto>
   <Producto xsi:type="Medicamento">
-    <Id>12</Id>
     <Descripcion>SALICYLIC ACID</Descripcion>
     <Precio>2528.68</Precio>
     <Tipo>Medicamento</Tipo>
@@ -77,7 +72,6 @@
     <Uso>Antibiotico</Uso>
   </Producto>
   <Producto xsi:type="Medicamento">
-    <Id>13</Id>
     <Descripcion>Citalopram</Descripcion>
     <Precio>1555.28</Precio>
     <Tipo>Medicamento</Tipo>
@@ -85,7 +79,6 @@
     <Uso>Antialergico</Uso>
   </Producto>
   <Producto xsi:type="Medicamento">
-    <Id>14</Id>
     <Descripcion>valsartan</Descripcion>
     <Precio>1204.79</Precio>
     <Tipo>Medicamento</Tipo>
@@ -93,7 +86,6 @@
     <Uso>Antialergico</Uso>
   </Producto>
   <Producto xsi:type="Medicamento">
-    <Id>15</Id>
     <Descripcion>HUMAN IMMUNOGLOBULIN G</Descripcion>
     <Precio>641.51</Precio>
     <Tipo>Medicamento</Tipo>
@@ -101,7 +93,6 @@
     <Uso>Analgesico</Uso>
   </Producto>
   <Producto xsi:type="Medicamento">
-    <Id>16</Id>
     <Descripcion>Calendula Officinalis</Descripcion>
     <Precio>1439.01</Precio>
     <Tipo>Medicamento</Tipo>
@@ -109,7 +100,6 @@
     <Uso>Antialergico</Uso>
   </Producto>
   <Producto xsi:type="Medicamento">
-    <Id>17</Id>
     <Descripcion>ceftriaxone</Descripcion>
     <Precio>2510.25</Precio>
     <Tipo>Medicamento</Tipo>
@@ -117,15 +107,6 @@
     <Uso>Antibiotico</Uso>
   </Producto>
   <Producto xsi:type="Medicamento">
-    <Id>18</Id>
-    <Descripcion>Cat Hair, Standardized</Descripcion>
-    <Precio>2296.27</Precio>
-    <Tipo>Medicamento</Tipo>
-    <Mg>13</Mg>
-    <Uso>Antialergico</Uso>
-  </Producto>
-  <Producto xsi:type="Medicamento">
-    <Id>19</Id>
     <Descripcion>Clonidine Hydrochloride</Descripcion>
     <Precio>1044.17</Precio>
     <Tipo>Medicamento</Tipo>
@@ -133,7 +114,6 @@
     <Uso>Analgesico</Uso>
   </Producto>
   <Producto xsi:type="Medicamento">
-    <Id>20</Id>
     <Descripcion>LIDOCAINE</Descripcion>
     <Precio>2004.28</Precio>
     <Tipo>Medicamento</Tipo>
@@ -141,7 +121,6 @@
     <Uso>Antibiotico</Uso>
   </Producto>
   <Producto xsi:type="Medicamento">
-    <Id>21</Id>
     <Descripcion>Echinacea,</Descripcion>
     <Precio>1817.06</Precio>
     <Tipo>Medicamento</Tipo>
@@ -149,7 +128,6 @@
     <Uso>Antibiotico</Uso>
   </Producto>
   <Producto xsi:type="Medicamento">
-    <Id>22</Id>
     <Descripcion>Sertraline Hydrochloride</Descripcion>
     <Precio>2937.22</Precio>
     <Tipo>Medicamento</Tipo>
@@ -157,7 +135,6 @@
     <Uso>Antibiotico</Uso>
   </Producto>
   <Producto xsi:type="Inyeccion">
-    <Id>23</Id>
     <Descripcion>azithromycin</Descripcion>
     <Precio>862.23</Precio>
     <Tipo>Inyeccion</Tipo>
@@ -165,7 +142,6 @@
     <Uso>Analgesico</Uso>
   </Producto>
   <Producto xsi:type="Inyeccion">
-    <Id>24</Id>
     <Descripcion>Standardized Senna Concentrate</Descripcion>
     <Precio>1031.61</Precio>
     <Tipo>Inyeccion</Tipo>
@@ -173,7 +149,6 @@
     <Uso>Antialergico</Uso>
   </Producto>
   <Producto xsi:type="Inyeccion">
-    <Id>25</Id>
     <Descripcion>Morphine Sulfate</Descripcion>
     <Precio>398.51</Precio>
     <Tipo>Inyeccion</Tipo>
@@ -181,7 +156,6 @@
     <Uso>Antibiotico</Uso>
   </Producto>
   <Producto xsi:type="Inyeccion">
-    <Id>26</Id>
     <Descripcion>Pyridoxine Hydrochloride</Descripcion>
     <Precio>697.06</Precio>
     <Tipo>Inyeccion</Tipo>
@@ -189,7 +163,6 @@
     <Uso>Antibiotico</Uso>
   </Producto>
   <Producto xsi:type="Inyeccion">
-    <Id>27</Id>
     <Descripcion>Acetaminophen and Diphenhydramine HCl</Descripcion>
     <Precio>905.09</Precio>
     <Tipo>Inyeccion</Tipo>
@@ -197,7 +170,6 @@
     <Uso>Analgesico</Uso>
   </Producto>
   <Producto xsi:type="Inyeccion">
-    <Id>28</Id>
     <Descripcion>ATORVASTATIN CALCIUM</Descripcion>
     <Precio>1159.38</Precio>
     <Tipo>Inyeccion</Tipo>
@@ -205,7 +177,6 @@
     <Uso>Antibiotico</Uso>
   </Producto>
   <Producto xsi:type="Inyeccion">
-    <Id>29</Id>
     <Descripcion>zolpidem tartrate</Descripcion>
     <Precio>670.48</Precio>
     <Tipo>Inyeccion</Tipo>
@@ -213,7 +184,6 @@
     <Uso>Antialergico</Uso>
   </Producto>
   <Producto xsi:type="Inyeccion">
-    <Id>30</Id>
     <Descripcion>Divalproex Sodium</Descripcion>
     <Precio>389.03</Precio>
     <Tipo>Inyeccion</Tipo>
@@ -221,7 +191,6 @@
     <Uso>Antialergico</Uso>
   </Producto>
   <Producto xsi:type="Inyeccion">
-    <Id>31</Id>
     <Descripcion>Walnut California Black Pollen</Descripcion>
     <Precio>1416.46</Precio>
     <Tipo>Inyeccion</Tipo>
@@ -229,7 +198,6 @@
     <Uso>Analgesico</Uso>
   </Producto>
   <Producto xsi:type="Inyeccion">
-    <Id>32</Id>
     <Descripcion>Aluminum Chlorohydrate</Descripcion>
     <Precio>1242.17</Precio>
     <Tipo>Inyeccion</Tipo>

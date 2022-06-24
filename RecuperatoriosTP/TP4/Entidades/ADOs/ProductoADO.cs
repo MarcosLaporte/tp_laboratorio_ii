@@ -80,16 +80,13 @@ namespace Entidades.ADOs
 				{
 					int id = dataReader.GetInt32(0);
 					string descripcion = dataReader.GetString(1);
-					float precio = dataReader.GetFloat(2);
+					float precio = (float)dataReader.GetDouble(2);
 					ETipo tipo = (ETipo)dataReader.GetInt32(3);
-					int cc = dataReader.GetInt32(4);
-					int mg = dataReader.GetInt32(5);
-					EUso uso = (EUso)dataReader.GetInt32(6);
 
 					Producto producto = tipo switch
 									{
-										ETipo.Medicamento => new Medicamento(id, descripcion, precio, mg, uso),
-										ETipo.Inyeccion => new Inyeccion(id, descripcion, precio, cc, uso),
+										ETipo.Medicamento => new Medicamento(id, descripcion, precio, dataReader.GetInt32(5), (EUso)dataReader.GetInt32(6)),
+										ETipo.Inyeccion => new Inyeccion(id, descripcion, precio, dataReader.GetInt32(4), (EUso)dataReader.GetInt32(6)),
 										_ => new Higiene(id, descripcion, precio),
 									};
 
@@ -116,20 +113,25 @@ namespace Entidades.ADOs
 			{
 
 				comando.Parameters.Clear();
-				comando.CommandText = $"INSERT INTO productos(descripcion, precio, tipo, cc, mg, uso) VALUES(@descripcion, @precio, @tipo, @cc, @mg, @uso)";
 				comando.Parameters.AddWithValue("@descripcion", producto.Descripcion);
 				comando.Parameters.AddWithValue("@precio", producto.Precio);
 				comando.Parameters.AddWithValue("@tipo", (int)producto.Tipo);
 
 				if (producto is Inyeccion)
 				{
+					comando.CommandText = $"INSERT INTO productos(descripcion, precio, tipo, cc, uso) VALUES(@descripcion, @precio, @tipo, @cc, @uso)";
 					comando.Parameters.AddWithValue("@cc", ((Inyeccion)producto).Cc);
 					comando.Parameters.AddWithValue("@uso", (int)((Inyeccion)producto).Uso);
 				}
 				else if (producto is Medicamento)
 				{
+					comando.CommandText = $"INSERT INTO productos(descripcion, precio, tipo, mg, uso) VALUES(@descripcion, @precio, @tipo, @mg, @uso)";
 					comando.Parameters.AddWithValue("@mg", ((Medicamento)producto).Mg);
 					comando.Parameters.AddWithValue("@uso", (int)((Medicamento)producto).Uso);
+				}
+				else
+				{
+					comando.CommandText = $"INSERT INTO productos(descripcion, precio, tipo) VALUES(@descripcion, @precio, @tipo)";
 				}
 
 				conexion.Open();
