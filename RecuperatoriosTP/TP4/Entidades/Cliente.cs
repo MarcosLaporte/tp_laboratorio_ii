@@ -18,12 +18,17 @@ namespace Entidades
 
 		}
 		public Cliente(string nombre, string apellido, string telefono, ulong dni)
+			:this(nombre, apellido, telefono, dni, 0)
+		{
+			
+		}
+		public Cliente(string nombre, string apellido, string telefono, ulong dni, float debe)
 		{
 			this.Nombre = nombre;
 			this.Apellido = apellido;
 			this.Telefono = telefono;
 			this.Dni = dni;
-			this.Debe = 0;
+			this.Debe = debe;
 		}
 
 		#region Propiedades

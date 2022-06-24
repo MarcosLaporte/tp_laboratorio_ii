@@ -12,8 +12,8 @@ namespace Entidades.Productos
 		{
 
 		}
-        public Higiene(string descripcion, float precio)
-            : base(descripcion, precio, ETipo.Higiene) { }
+        public Higiene(int id, string descripcion, float precio)
+            : base(id, descripcion, precio, ETipo.Higiene) { }
 
         protected override string Datos(Producto p)
         {

@@ -7,6 +7,7 @@ using Entidades.Excepciones;
 
 namespace Entidades
 {
+    //public delegate Func<List<Cliente>, ulong, Cliente> DelegadoGetCliente();
     public class Venta
     {
         private float precio;

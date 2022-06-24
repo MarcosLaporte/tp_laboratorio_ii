@@ -35,7 +35,7 @@ namespace VistaForm
 			{
 				ulong dni = ulong.Parse(this.tBxDni.Text);
 				Cliente posibleClienteExistente = Cliente.GetClientePorDni(this.clientesExistentes, dni);
-				if(posibleClienteExistente == null)
+				if(posibleClienteExistente is null)
 				{
 					this.ClienteCreado = new Cliente(nombre, apellido, telefono, dni);
 					this.DialogResult = DialogResult.OK;

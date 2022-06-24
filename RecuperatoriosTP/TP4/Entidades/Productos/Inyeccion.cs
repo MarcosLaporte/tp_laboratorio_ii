@@ -15,8 +15,8 @@ namespace Entidades.Productos
 		{
 
 		}
-        public Inyeccion(string descripcion, float precio, int medida, EUso uso)
-            : base(descripcion, precio, ETipo.Inyeccion)
+        public Inyeccion(int id, string descripcion, float precio, int medida, EUso uso)
+            : base(id, descripcion, precio, ETipo.Inyeccion)
         {
             this.Cc = medida;
             this.Uso = uso;

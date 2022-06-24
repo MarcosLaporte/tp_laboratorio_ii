@@ -13,9 +13,9 @@ namespace Entidades
     [XmlInclude(typeof(Inyeccion))]
     public abstract class Producto
     {
-        private static int bancoIds;
-        private int id;
-        private string descripcion;
+		//private static int bancoIds;
+		private int id;
+		private string descripcion;
         private float precio;
         private ETipo tipo;
 
@@ -23,14 +23,15 @@ namespace Entidades
 		{
 
 		}
-        static Producto()
+        /*static Producto()
         {
             bancoIds = 1;
-        }
-        protected Producto(string descripcion, float precio, ETipo tipo)
+        }*/
+        protected Producto(int id, string descripcion, float precio, ETipo tipo)
         {
-            this.id = Producto.bancoIds;
-            Producto.bancoIds++;
+            /*this.id = Producto.bancoIds;
+            Producto.bancoIds++;*/
+            this.id = id;
             this.Descripcion = descripcion;
             this.Precio = precio;
             this.Tipo = tipo;

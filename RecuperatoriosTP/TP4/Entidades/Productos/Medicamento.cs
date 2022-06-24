@@ -15,8 +15,8 @@ namespace Entidades.Productos
 		{
 
 		}
-        public Medicamento(string descripcion, float precio, int mg, EUso uso)
-            : base(descripcion, precio, ETipo.Medicamento)
+        public Medicamento(int id, string descripcion, float precio, int mg, EUso uso)
+            : base(id, descripcion, precio, ETipo.Medicamento)
         {
             this.Mg = mg;
             this.Uso = uso;
