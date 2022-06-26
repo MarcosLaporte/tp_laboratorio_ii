@@ -24,24 +24,14 @@ namespace VistaForm
 			this.lBxClientes.Items.Clear();
 			this.lBxVentas.Items.Clear();
 
-			try
-			{
-				//this.clientes = Serializadora<List<Cliente>>.Leer("ListaDeClientes");
-				this.clientes = ClienteADO.ObtenerTodos();
-
-			}
-			catch (ClienteInvalidoException)
-			{
-				MessageBox.Show("Hubo un error con la lista de clientes.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				this.clientes = new List<Cliente>();
-			}
+			//this.clientes = Serializadora<List<Cliente>>.Leer("ListaDeClientes");
+			this.clientes = ClienteADO.ObtenerTodos();
+			this.clientes.ForEach((item) => this.lBxClientes.Items.Add(item.Dni));
 
 			//this.productos = Serializadora<List<Producto>>.Leer("ListaDeProductos");
 			this.productos = ProductoADO.ObtenerTodos();
 
 			this.ventas = Serializadora<List<Venta>>.Leer("ListaDeVentas");
-
-			this.clientes.ForEach((item) => this.lBxClientes.Items.Add(item.Dni));
 			this.ventas.ForEach((item) => this.lBxVentas.Items.Add(item.MostrarDatos(item,
 										Cliente.GetClientePorDni(this.clientes, item.DniCliente))));
 		}
@@ -56,7 +46,7 @@ namespace VistaForm
 			}
 			else if(res == DialogResult.Yes)
 			{
-
+				ClienteADO.Sobreescribir(this.clientes);
 				Serializadora<List<Cliente>>.Escribir(this.clientes, "ListaDeClientes");
 				Serializadora<List<Venta>>.Escribir(this.ventas, "ListaDeVentas");
 			}
@@ -70,11 +60,12 @@ namespace VistaForm
 
 			if (formAgregarCliente.DialogResult == DialogResult.OK)
 			{
-				Cliente cliente = formAgregarCliente.ClienteCreado;
+				Cliente nuevoCliente = formAgregarCliente.ClienteCreado;
 
-				if(Cliente.AgregarCliente(ref clientes, cliente))
+				if(Cliente.AgregarCliente(ref this.clientes, nuevoCliente))
 				{
-					this.lBxClientes.Items.Add(cliente.Dni);
+					ClienteADO.Agregar(nuevoCliente);
+					this.lBxClientes.Items.Add(nuevoCliente.Dni);
 				}
 			}
 		}
@@ -188,6 +179,7 @@ namespace VistaForm
 					if (res == DialogResult.Yes)
 					{
 						cliente.Debe = 0;
+						ClienteADO.PagarDeuda(cliente);
 					}
 				}
 				else
@@ -202,17 +194,26 @@ namespace VistaForm
 		}
 
 
-		//MIS FUNCIONES
+		/// <summary>
+		/// Recorre una cadena y copia cada uno de sus caracteres 
+		/// hasta que encuentra el mismo pasado por parámetro.
+		/// </summary>
+		/// <param name="cadena">La cadena a recorrer.</param>
+		/// <param name="caracter">El caracter a encontrar.</param>
+		/// <returns>La nueva cadena cortada.</returns>
 		public static string CortarStringEnCaracter(string cadena, char caracter)
 		{
 			string nuevaCadena = "";
 			for (int i = 0; i < cadena.Length; i++)
 			{
-				if (cadena[i] == caracter)
+				if (cadena[i] != caracter)
+				{
+					nuevaCadena += cadena[i];
+				}
+				else
 				{
 					break;
 				}
-				nuevaCadena += cadena[i];
 			}
 
 			return nuevaCadena;

@@ -23,6 +23,11 @@ namespace Entidades.ADOs
 			comando.CommandType = System.Data.CommandType.Text;
 		}
 
+		/// <summary>
+		/// Lee la base de datos y guarda estos en una lista del tipo Cliente.
+		/// </summary>
+		/// <returns>Una lista con los valores leídos, si no existe la tabla o
+		/// hay algún problema, retorna una lista vacía.</returns>
 		public static List<Cliente> ObtenerTodos()
 		{
 			List<Cliente> clientes = new List<Cliente>();
@@ -57,7 +62,11 @@ namespace Entidades.ADOs
 			return clientes;
 		}
 
-
+		/// <summary>
+		/// Agrega el objeto Cliente pasado por parámetro a la base de datos.
+		/// </summary>
+		/// <param name="cliente">El cliente del cual toma los valores.</param>
+		/// <returns>true si pudo agregarlo; false si no.</returns>
 		public static bool Agregar(Cliente cliente)
 		{
 			bool ret = true;
@@ -92,6 +101,13 @@ namespace Entidades.ADOs
 		{
 			return ClienteADO.PagarDeuda(cliente.Dni);
 		}
+
+		/// <summary>
+		/// Modifica la fila cuya columna [dni] concuerda con el dato pasado
+		/// por parámetro y establece el valor en la columna [debe] en 0.
+		/// </summary>
+		/// <param name="dni">El valor a buscar en la columna [dni].</param>
+		/// <returns>true si pudo modificarlo; false si no.</returns>
 		public static bool PagarDeuda(ulong dni)
 		{
 			bool ret = true;
@@ -121,6 +137,12 @@ namespace Entidades.ADOs
 		{
 			return ClienteADO.Eliminar(cliente.Dni);
 		}
+
+		/// <summary>
+		/// Elimina la fila cuya columna [dni] concuerda con el dato pasado por parámetro.
+		/// </summary>
+		/// <param name="dni">El valor a buscar en la columna [dni].</param>
+		/// <returns>true si pudo eliminarlo; false si no.</returns>
 		public static bool Eliminar(ulong dni)
 		{
 			bool ret = true;
@@ -147,5 +169,28 @@ namespace Entidades.ADOs
 			return ret;
 		}
 
+		/// <summary>
+		/// Elimina todos los valores de la base de datos y escribe los de la lista pasada por parámetros.
+		/// </summary>
+		/// <param name="nuevosClientes">La lista cuyos datos se escriben en la lista.</param>
+		public static void Sobreescribir(List<Cliente> nuevosClientes)
+		{
+			try
+			{
+				comando.CommandText = $"DELETE FROM clientes";
+				conexion.Open();
+				comando.ExecuteNonQuery();
+
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+			finally
+			{
+				conexion.Close();
+				nuevosClientes.ForEach((cliente) => ClienteADO.Agregar(cliente));
+			}
+		}
 	}
 }

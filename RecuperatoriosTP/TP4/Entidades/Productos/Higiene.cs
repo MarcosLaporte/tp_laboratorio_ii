@@ -15,14 +15,9 @@ namespace Entidades.Productos
         public Higiene(int id, string descripcion, float precio)
             : base(id, descripcion, precio, ETipo.Higiene) { }
 
-        protected override string Datos(Producto p)
-        {
-            return base.Datos(p);
-        }
-
         public override string ToString()
         {
-            return this.Datos(this);
+            return this.Datos();
         }
     }
 }

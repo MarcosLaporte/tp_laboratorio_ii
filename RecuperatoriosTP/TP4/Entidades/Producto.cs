@@ -13,7 +13,6 @@ namespace Entidades
     [XmlInclude(typeof(Inyeccion))]
     public abstract class Producto
     {
-		//private static int bancoIds;
 		private int id;
 		private string descripcion;
         private float precio;
@@ -23,14 +22,8 @@ namespace Entidades
 		{
 
 		}
-        /*static Producto()
-        {
-            bancoIds = 1;
-        }*/
         protected Producto(int id, string descripcion, float precio, ETipo tipo)
         {
-            /*this.id = Producto.bancoIds;
-            Producto.bancoIds++;*/
             this.id = id;
             this.Descripcion = descripcion;
             this.Precio = precio;
@@ -58,17 +51,12 @@ namespace Entidades
             set { this.tipo = value; }
         }
 
-        protected virtual string Datos(Producto p)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine($"Tipo: {p.tipo}.");
-            sb.AppendLine($"Descripción: [{p.id}] {p.descripcion}.");
-            sb.AppendLine($"Precio: {p.precio:C}.");
-
-            return sb.ToString();
-        }
-
+        /// <summary>
+        /// Busca en la lista pasada por parámetro algún Producto que concuerde con el [id].
+        /// </summary>
+        /// <param name="lista">La lista donde buscar.</param>
+        /// <param name="id">El id que buscar.</param>
+        /// <returns>Retorna el Producto si lo encuentra; si no nulo.</returns>
         public static Producto GetProductoPorId(List<Producto> lista, int id)
         {
             Producto miProducto = null;

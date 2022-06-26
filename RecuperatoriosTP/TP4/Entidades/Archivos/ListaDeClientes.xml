@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCliente xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Cliente>
-    <Nombre>Steve</Nombre>
-    <Apellido>Rogers</Apellido>
-    <Telefono>5345408117</Telefono>
-    <Dni>58135220</Dni>
-    <Debe>4918.42</Debe>
-  </Cliente>
-  <Cliente>
-    <Nombre>Anthony</Nombre>
-    <Apellido>Stark</Apellido>
-    <Telefono>6375125832</Telefono>
-    <Dni>45038419</Dni>
+    <Nombre>ObiWan</Nombre>
+    <Apellido>Kenobi</Apellido>
+    <Telefono>1232648</Telefono>
+    <Dni>8756456</Dni>
     <Debe>0</Debe>
   </Cliente>
   <Cliente>
-    <Nombre>Stephen</Nombre>
-    <Apellido>Strange</Apellido>
-    <Telefono>7363465932</Telefono>
-    <Dni>83150463</Dni>
-    <Debe>250</Debe>
+    <Nombre>Peter</Nombre>
+    <Apellido>Parker</Apellido>
+    <Telefono>4781583080</Telefono>
+    <Dni>28818884</Dni>
+    <Debe>4233.49</Debe>
+  </Cliente>
+  <Cliente>
+    <Nombre>Natasha</Nombre>
+    <Apellido>Romanoff</Apellido>
+    <Telefono>6623469230</Telefono>
+    <Dni>29557358</Dni>
+    <Debe>0</Debe>
   </Cliente>
   <Cliente>
     <Nombre>Thor</Nombre>
@@ -29,24 +29,17 @@
     <Debe>1263.58</Debe>
   </Cliente>
   <Cliente>
+    <Nombre>Anthony</Nombre>
+    <Apellido>Stark</Apellido>
+    <Telefono>6375125832</Telefono>
+    <Dni>45038419</Dni>
+    <Debe>0</Debe>
+  </Cliente>
+  <Cliente>
     <Nombre>Clint</Nombre>
     <Apellido>Barton</Apellido>
     <Telefono>9496175297</Telefono>
     <Dni>45421268</Dni>
-    <Debe>0</Debe>
-  </Cliente>
-  <Cliente>
-    <Nombre>Scott</Nombre>
-    <Apellido>Lang</Apellido>
-    <Telefono>9283758890</Telefono>
-    <Dni>27981300</Dni>
-    <Debe>0</Debe>
-  </Cliente>
-  <Cliente>
-    <Nombre>Natasha</Nombre>
-    <Apellido>Romanoff</Apellido>
-    <Telefono>6623469230</Telefono>
-    <Dni>29557358</Dni>
     <Debe>0</Debe>
   </Cliente>
   <Cliente>
@@ -57,10 +50,17 @@
     <Debe>0</Debe>
   </Cliente>
   <Cliente>
-    <Nombre>Peter</Nombre>
-    <Apellido>Parker</Apellido>
-    <Telefono>4781583080</Telefono>
-    <Dni>28818884</Dni>
-    <Debe>4233.49</Debe>
+    <Nombre>Steve</Nombre>
+    <Apellido>Rogers</Apellido>
+    <Telefono>5345408117</Telefono>
+    <Dni>58135220</Dni>
+    <Debe>4918.42</Debe>
+  </Cliente>
+  <Cliente>
+    <Nombre>Stephen</Nombre>
+    <Apellido>Strange</Apellido>
+    <Telefono>7363465932</Telefono>
+    <Dni>83150463</Dni>
+    <Debe>250</Debe>
   </Cliente>
 </ArrayOfCliente>

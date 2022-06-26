@@ -66,6 +66,12 @@ namespace Entidades.ADOs
 
 			return productos;
 		}
+		
+		/// <summary>
+		/// Lee la base de datos y guarda estos en una lista del tipo Producto.
+		/// </summary>
+		/// <returns>Una lista con los valores leídos, si no existe la tabla o
+		/// hay algún problema, retorna una lista vacía.</returns>
 		public static List<Producto> ObtenerTodos()
 		{
 			List<Producto> productos = new List<Producto>();
@@ -106,6 +112,11 @@ namespace Entidades.ADOs
 			return productos;
 		}
 
+		/// <summary>
+		/// Agrega el objeto Producto pasado por parámetro a la base de datos.
+		/// </summary>
+		/// <param name="producto">El producto del cual toma los valores.</param>
+		/// <returns>true si pudo agregarlo; false si no.</returns>
 		public static bool Agregar(Producto producto)
 		{
 			bool ret = true;
@@ -154,6 +165,12 @@ namespace Entidades.ADOs
 		{
 			return ProductoADO.Eliminar(producto.Id);
 		}
+
+		/// <summary>
+		/// Elimina la fila cuya columna [id] concuerda con el dato pasado por parámetro.
+		/// </summary>
+		/// <param name="id">El valor a buscar en la columna [id].</param>
+		/// <returns>true si pudo eliminarlo; false si no.</returns>
 		public static bool Eliminar(int id)
 		{
 			bool ret = true;

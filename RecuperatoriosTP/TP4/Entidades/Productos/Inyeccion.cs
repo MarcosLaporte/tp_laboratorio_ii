@@ -52,15 +52,10 @@ namespace Entidades.Productos
             return ret;
         }
 
-        protected override string Datos(Producto p)
-        {
-            return base.Datos(p) + $"Inyección de {((Inyeccion)p).cc:D}cc\n"
-                + $"Cada {((Inyeccion)p).AdministrarDosis(this.uso)} años.\n";
-        }
-
         public override string ToString()
         {
-            return this.Datos(this);
+            return this.Datos() + $"Inyección de {this.cc:D}cc\n"
+                + $"Cada {this.AdministrarDosis(this.uso)} años.\n";
         }
     }
 }

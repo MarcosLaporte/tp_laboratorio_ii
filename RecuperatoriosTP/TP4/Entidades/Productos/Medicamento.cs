@@ -33,6 +33,12 @@ namespace Entidades.Productos
             set { this.uso = value; }
         }
 
+        /// <summary>
+        /// Clasifica los valores de los atributos [uso] y [mg] y, dependiendo de qué
+        /// condición cumplan, retorna cada cuantas horas debe administrarse el medicamento.
+        /// </summary>
+        /// <param name="uso">El valor del enumerado EUso.</param>
+        /// <returns>Un entero que representa horas.</returns>
         public int AdministrarDosis(EUso uso)
         {
             //Cada cuantas horas
@@ -53,15 +59,10 @@ namespace Entidades.Productos
             return ret;
         }
 
-        protected override string Datos(Producto p)
-        {
-            return base.Datos(p) + $"Miligramos: {((Medicamento)p).mg:D}\n" +
-                $"Cada {((Medicamento)p).AdministrarDosis(this.uso)} horas.\n";
-        }
-
         public override string ToString()
         {
-            return this.Datos(this);
+            return this.Datos() + $"Miligramos: {this.mg:D}\n" +
+                $"Cada {this.AdministrarDosis(this.uso)} horas.\n";
         }
     }
 }
