@@ -48,6 +48,9 @@ namespace VistaForm
 			get { return this.venta; }
 		}
 
+		public float Precio { get => this.precio; }
+		public float Senia { get => this.senia; }
+
 		private void FrmAgregarPedido_Load(object sender, EventArgs e)
 		{
 			this.carrito = new List<Producto>();

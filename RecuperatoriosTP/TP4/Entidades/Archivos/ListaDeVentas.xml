@@ -1,65 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfVenta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Venta>
-    <Precio>1439.01</Precio>
-    <Senia>0</Senia>
-    <DniCliente>27981300</DniCliente>
+    <Precio>3926.47</Precio>
+    <Senia>3926.47</Senia>
+    <DniCliente>45038419</DniCliente>
     <Productos>
       <Producto xsi:type="Medicamento">
         <Id>16</Id>
-        <Descripcion>Calendula Officinalis</Descripcion>
-        <Precio>1439.01</Precio>
+        <Descripcion>HUMAN IMMUNOGLOBULIN G</Descripcion>
+        <Precio>641.51</Precio>
         <Tipo>Medicamento</Tipo>
-        <Mg>9</Mg>
+        <Mg>11</Mg>
+        <Uso>Analgesico</Uso>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>23</Id>
+        <Descripcion>azithromycin</Descripcion>
+        <Precio>862.23</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>6</Cc>
+        <Uso>Analgesico</Uso>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>7</Id>
+        <Descripcion>Jabon uso intimo</Descripcion>
+        <Precio>1234.29</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>6</Id>
+        <Descripcion>Jabon p/bebes y ninios</Descripcion>
+        <Precio>1188.44</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+    </Productos>
+  </Venta>
+  <Venta>
+    <Precio>2946.02</Precio>
+    <Senia>0</Senia>
+    <DniCliente>49827708</DniCliente>
+    <Productos>
+      <Producto xsi:type="Medicamento">
+        <Id>15</Id>
+        <Descripcion>valsartan</Descripcion>
+        <Precio>1204.79</Precio>
+        <Tipo>Medicamento</Tipo>
+        <Mg>5</Mg>
         <Uso>Antialergico</Uso>
-      </Producto>
-    </Productos>
-  </Venta>
-  <Venta>
-    <Precio>4972.79</Precio>
-    <Senia>4972.79</Senia>
-    <DniCliente>27981300</DniCliente>
-    <Productos>
-      <Producto xsi:type="Higiene">
-        <Id>2</Id>
-        <Descripcion>Jabon corporal</Descripcion>
-        <Precio>809.57</Precio>
-        <Tipo>Higiene</Tipo>
-      </Producto>
-      <Producto xsi:type="Higiene">
-        <Id>8</Id>
-        <Descripcion>Shampoo</Descripcion>
-        <Precio>627.72</Precio>
-        <Tipo>Higiene</Tipo>
-      </Producto>
-      <Producto xsi:type="Higiene">
-        <Id>9</Id>
-        <Descripcion>Shampoo con acondicionador</Descripcion>
-        <Precio>1006.82</Precio>
-        <Tipo>Higiene</Tipo>
-      </Producto>
-      <Producto xsi:type="Medicamento">
-        <Id>12</Id>
-        <Descripcion>SALICYLIC ACID</Descripcion>
-        <Precio>2528.68</Precio>
-        <Tipo>Medicamento</Tipo>
-        <Mg>12</Mg>
-        <Uso>Antibiotico</Uso>
-      </Producto>
-    </Productos>
-  </Venta>
-  <Venta>
-    <Precio>4993.4297</Precio>
-    <Senia>75</Senia>
-    <DniCliente>58135220</DniCliente>
-    <Productos>
-      <Producto xsi:type="Medicamento">
-        <Id>17</Id>
-        <Descripcion>ceftriaxone</Descripcion>
-        <Precio>2510.25</Precio>
-        <Tipo>Medicamento</Tipo>
-        <Mg>15</Mg>
-        <Uso>Antibiotico</Uso>
       </Producto>
       <Producto xsi:type="Medicamento">
         <Id>19</Id>
@@ -69,36 +56,273 @@
         <Mg>6</Mg>
         <Uso>Analgesico</Uso>
       </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>26</Id>
+        <Descripcion>Pyridoxine Hydrochloride</Descripcion>
+        <Precio>697.06</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>10</Cc>
+        <Uso>Antibiotico</Uso>
+      </Producto>
+    </Productos>
+  </Venta>
+  <Venta>
+    <Precio>735.87</Precio>
+    <Senia>235.87</Senia>
+    <DniCliente>45421268</DniCliente>
+    <Productos>
+      <Producto xsi:type="Higiene">
+        <Id>11</Id>
+        <Descripcion>Shampoo colorante</Descripcion>
+        <Precio>735.87</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+    </Productos>
+  </Venta>
+  <Venta>
+    <Precio>1234.29</Precio>
+    <Senia>234.29</Senia>
+    <DniCliente>28818884</DniCliente>
+    <Productos>
+      <Producto xsi:type="Higiene">
+        <Id>7</Id>
+        <Descripcion>Jabon uso intimo</Descripcion>
+        <Precio>1234.29</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+    </Productos>
+  </Venta>
+  <Venta>
+    <Precio>15245.449</Precio>
+    <Senia>15245.449</Senia>
+    <DniCliente>45038419</DniCliente>
+    <Productos>
+      <Producto xsi:type="Higiene">
+        <Id>2</Id>
+        <Descripcion>Jabon facial</Descripcion>
+        <Precio>293.15</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>3</Id>
+        <Descripcion>Jabon corporal</Descripcion>
+        <Precio>809.57</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>4</Id>
+        <Descripcion>Jabon abrasivo /exfoliante</Descripcion>
+        <Precio>391.48</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>5</Id>
+        <Descripcion>Jabon desodorante</Descripcion>
+        <Precio>348.69</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>6</Id>
+        <Descripcion>Jabon p/bebes y ninios</Descripcion>
+        <Precio>1188.44</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>7</Id>
+        <Descripcion>Jabon uso intimo</Descripcion>
+        <Precio>1234.29</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>8</Id>
+        <Descripcion>Jabon antibacterial</Descripcion>
+        <Precio>1079.57</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>9</Id>
+        <Descripcion>Shampoo</Descripcion>
+        <Precio>627.72</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>10</Id>
+        <Descripcion>Shampoo con acondicionador</Descripcion>
+        <Precio>1006.82</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Higiene">
+        <Id>11</Id>
+        <Descripcion>Shampoo colorante</Descripcion>
+        <Precio>735.87</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>23</Id>
+        <Descripcion>azithromycin</Descripcion>
+        <Precio>862.23</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>6</Cc>
+        <Uso>Analgesico</Uso>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>24</Id>
+        <Descripcion>Standardized Senna Concentrate</Descripcion>
+        <Precio>1031.61</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>9</Cc>
+        <Uso>Antialergico</Uso>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>25</Id>
+        <Descripcion>Morphine Sulfate</Descripcion>
+        <Precio>398.51</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>5</Cc>
+        <Uso>Antibiotico</Uso>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>26</Id>
+        <Descripcion>Pyridoxine Hydrochloride</Descripcion>
+        <Precio>697.06</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>10</Cc>
+        <Uso>Antibiotico</Uso>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>27</Id>
+        <Descripcion>Acetaminophen and Diphenhydramine HCl</Descripcion>
+        <Precio>905.09</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>15</Cc>
+        <Uso>Analgesico</Uso>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>28</Id>
+        <Descripcion>ATORVASTATIN CALCIUM</Descripcion>
+        <Precio>1159.38</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>9</Cc>
+        <Uso>Antibiotico</Uso>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>29</Id>
+        <Descripcion>zolpidem tartrate</Descripcion>
+        <Precio>670.48</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>11</Cc>
+        <Uso>Antialergico</Uso>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>30</Id>
+        <Descripcion>Divalproex Sodium</Descripcion>
+        <Precio>389.03</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>10</Cc>
+        <Uso>Antialergico</Uso>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>31</Id>
+        <Descripcion>Walnut California Black Pollen</Descripcion>
+        <Precio>1416.46</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>14</Cc>
+        <Uso>Analgesico</Uso>
+      </Producto>
+    </Productos>
+  </Venta>
+  <Venta>
+    <Precio>293.15</Precio>
+    <Senia>0</Senia>
+    <DniCliente>45038419</DniCliente>
+    <Productos>
+      <Producto xsi:type="Higiene">
+        <Id>2</Id>
+        <Descripcion>Jabon facial</Descripcion>
+        <Precio>293.15</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+    </Productos>
+  </Venta>
+  <Venta>
+    <Precio>3448.92</Precio>
+    <Senia>3448.92</Senia>
+    <DniCliente>45038419</DniCliente>
+    <Productos>
+      <Producto xsi:type="Inyeccion">
+        <Id>23</Id>
+        <Descripcion>azithromycin</Descripcion>
+        <Precio>862.23</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>6</Cc>
+        <Uso>Analgesico</Uso>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>23</Id>
+        <Descripcion>azithromycin</Descripcion>
+        <Precio>862.23</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>6</Cc>
+        <Uso>Analgesico</Uso>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>23</Id>
+        <Descripcion>azithromycin</Descripcion>
+        <Precio>862.23</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>6</Cc>
+        <Uso>Analgesico</Uso>
+      </Producto>
+      <Producto xsi:type="Inyeccion">
+        <Id>23</Id>
+        <Descripcion>azithromycin</Descripcion>
+        <Precio>862.23</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>6</Cc>
+        <Uso>Analgesico</Uso>
+      </Producto>
+    </Productos>
+  </Venta>
+  <Venta>
+    <Precio>1555.28</Precio>
+    <Senia>0</Senia>
+    <DniCliente>42587412</DniCliente>
+    <Productos>
       <Producto xsi:type="Medicamento">
-        <Id>16</Id>
-        <Descripcion>Calendula Officinalis</Descripcion>
-        <Precio>1439.01</Precio>
+        <Id>14</Id>
+        <Descripcion>Citalopram</Descripcion>
+        <Precio>1555.28</Precio>
         <Tipo>Medicamento</Tipo>
-        <Mg>9</Mg>
+        <Mg>6</Mg>
         <Uso>Antialergico</Uso>
       </Producto>
     </Productos>
   </Venta>
   <Venta>
-    <Precio>5233.49</Precio>
-    <Senia>1000</Senia>
-    <DniCliente>28818884</DniCliente>
+    <Precio>809.57</Precio>
+    <Senia>809.57</Senia>
+    <DniCliente>8756456</DniCliente>
+    <Productos>
+      <Producto xsi:type="Higiene">
+        <Id>3</Id>
+        <Descripcion>Jabon corporal</Descripcion>
+        <Precio>809.57</Precio>
+        <Tipo>Higiene</Tipo>
+      </Producto>
+    </Productos>
+  </Venta>
+  <Venta>
+    <Precio>2528.68</Precio>
+    <Senia>0</Senia>
+    <DniCliente>45038419</DniCliente>
     <Productos>
       <Producto xsi:type="Medicamento">
-        <Id>22</Id>
-        <Descripcion>Sertraline Hydrochloride</Descripcion>
-        <Precio>2937.22</Precio>
+        <Id>13</Id>
+        <Descripcion>SALICYLIC ACID</Descripcion>
+        <Precio>2528.68</Precio>
         <Tipo>Medicamento</Tipo>
         <Mg>12</Mg>
         <Uso>Antibiotico</Uso>
-      </Producto>
-      <Producto xsi:type="Medicamento">
-        <Id>18</Id>
-        <Descripcion>Cat Hair, Standardized</Descripcion>
-        <Precio>2296.27</Precio>
-        <Tipo>Medicamento</Tipo>
-        <Mg>13</Mg>
-        <Uso>Antialergico</Uso>
       </Producto>
     </Productos>
   </Venta>

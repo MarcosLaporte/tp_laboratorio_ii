@@ -34,9 +34,9 @@ namespace Entidades
 					xmlSerializer.Serialize(sw, datos);
 				}
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				throw new Exception($"Error en el archivo {completa}.");
+				throw new Exception(ex.Message);
 			}
 		}
 		public static T Leer(string nombre)
@@ -72,9 +72,9 @@ namespace Entidades
 
 				return datos;
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				throw new Exception($"Error en el archivo {archivo}.");
+				throw new Exception(ex.Message);
 			}
 		}
 	}

@@ -12,7 +12,7 @@
     <Apellido>Parker</Apellido>
     <Telefono>4781583080</Telefono>
     <Dni>28818884</Dni>
-    <Debe>4233.49</Debe>
+    <Debe>5233.49</Debe>
   </Cliente>
   <Cliente>
     <Nombre>Natasha</Nombre>
@@ -29,6 +29,13 @@
     <Debe>1263.58</Debe>
   </Cliente>
   <Cliente>
+    <Nombre>Jane</Nombre>
+    <Apellido>Foster</Apellido>
+    <Telefono>1132434159</Telefono>
+    <Dni>42587412</Dni>
+    <Debe>1555.28</Debe>
+  </Cliente>
+  <Cliente>
     <Nombre>Anthony</Nombre>
     <Apellido>Stark</Apellido>
     <Telefono>6375125832</Telefono>
@@ -40,14 +47,14 @@
     <Apellido>Barton</Apellido>
     <Telefono>9496175297</Telefono>
     <Dni>45421268</Dni>
-    <Debe>0</Debe>
+    <Debe>500</Debe>
   </Cliente>
   <Cliente>
     <Nombre>Bruce</Nombre>
     <Apellido>Banner</Apellido>
     <Telefono>9133370598</Telefono>
     <Dni>49827708</Dni>
-    <Debe>0</Debe>
+    <Debe>2946.02</Debe>
   </Cliente>
   <Cliente>
     <Nombre>Steve</Nombre>

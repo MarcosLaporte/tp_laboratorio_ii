@@ -35,50 +35,50 @@ namespace VistaForm
 			this.btnBorrarCliente = new System.Windows.Forms.Button();
 			this.btnPagarPend = new System.Windows.Forms.Button();
 			this.lBxVentas = new System.Windows.Forms.ListBox();
-			this.lBxClientes = new System.Windows.Forms.ListBox();
-			this.rTBxClientes = new System.Windows.Forms.RichTextBox();
 			this.rTBxVentas = new System.Windows.Forms.RichTextBox();
 			this.lblVentas = new System.Windows.Forms.Label();
 			this.lblDescVentas = new System.Windows.Forms.Label();
 			this.lblClientes = new System.Windows.Forms.Label();
+			this.dtgvClientes = new System.Windows.Forms.DataGridView();
+			((System.ComponentModel.ISupportInitialize)(this.dtgvClientes)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btnAgregarCliente
 			// 
-			this.btnAgregarCliente.Location = new System.Drawing.Point(12, 442);
+			this.btnAgregarCliente.Location = new System.Drawing.Point(662, 442);
 			this.btnAgregarCliente.Name = "btnAgregarCliente";
 			this.btnAgregarCliente.Size = new System.Drawing.Size(224, 85);
-			this.btnAgregarCliente.TabIndex = 0;
+			this.btnAgregarCliente.TabIndex = 2;
 			this.btnAgregarCliente.Text = "Agregar cliente";
 			this.btnAgregarCliente.UseVisualStyleBackColor = true;
 			this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
 			// 
 			// btnAgregarPedido
 			// 
-			this.btnAgregarPedido.Location = new System.Drawing.Point(242, 442);
+			this.btnAgregarPedido.Location = new System.Drawing.Point(12, 442);
 			this.btnAgregarPedido.Name = "btnAgregarPedido";
 			this.btnAgregarPedido.Size = new System.Drawing.Size(224, 85);
-			this.btnAgregarPedido.TabIndex = 1;
+			this.btnAgregarPedido.TabIndex = 0;
 			this.btnAgregarPedido.Text = "Agregar pedido";
 			this.btnAgregarPedido.UseVisualStyleBackColor = true;
 			this.btnAgregarPedido.Click += new System.EventHandler(this.btnAgregarPedido_Click);
 			// 
 			// btnBorrarCliente
 			// 
-			this.btnBorrarCliente.Location = new System.Drawing.Point(472, 442);
+			this.btnBorrarCliente.Location = new System.Drawing.Point(892, 442);
 			this.btnBorrarCliente.Name = "btnBorrarCliente";
 			this.btnBorrarCliente.Size = new System.Drawing.Size(224, 85);
-			this.btnBorrarCliente.TabIndex = 2;
+			this.btnBorrarCliente.TabIndex = 3;
 			this.btnBorrarCliente.Text = "Eliminar cliente";
 			this.btnBorrarCliente.UseVisualStyleBackColor = true;
 			this.btnBorrarCliente.Click += new System.EventHandler(this.btnBorrarCliente_Click);
 			// 
 			// btnPagarPend
 			// 
-			this.btnPagarPend.Location = new System.Drawing.Point(702, 442);
+			this.btnPagarPend.Location = new System.Drawing.Point(432, 442);
 			this.btnPagarPend.Name = "btnPagarPend";
 			this.btnPagarPend.Size = new System.Drawing.Size(224, 85);
-			this.btnPagarPend.TabIndex = 3;
+			this.btnPagarPend.TabIndex = 1;
 			this.btnPagarPend.Text = "Pagar pendiente";
 			this.btnPagarPend.UseVisualStyleBackColor = true;
 			this.btnPagarPend.Click += new System.EventHandler(this.btnPagarPend_Click);
@@ -93,31 +93,6 @@ namespace VistaForm
 			this.lBxVentas.TabIndex = 4;
 			this.lBxVentas.TabStop = false;
 			this.lBxVentas.Click += new System.EventHandler(this.lBxVentas_Click);
-			// 
-			// lBxClientes
-			// 
-			this.lBxClientes.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-			this.lBxClientes.FormattingEnabled = true;
-			this.lBxClientes.ItemHeight = 25;
-			this.lBxClientes.Location = new System.Drawing.Point(662, 32);
-			this.lBxClientes.Name = "lBxClientes";
-			this.lBxClientes.Size = new System.Drawing.Size(262, 254);
-			this.lBxClientes.TabIndex = 4;
-			this.lBxClientes.Click += new System.EventHandler(this.lBxClientes_Click);
-			// 
-			// rTBxClientes
-			// 
-			this.rTBxClientes.BackColor = System.Drawing.SystemColors.Control;
-			this.rTBxClientes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.rTBxClientes.Enabled = false;
-			this.rTBxClientes.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-			this.rTBxClientes.Location = new System.Drawing.Point(662, 292);
-			this.rTBxClientes.Name = "rTBxClientes";
-			this.rTBxClientes.ReadOnly = true;
-			this.rTBxClientes.Size = new System.Drawing.Size(262, 144);
-			this.rTBxClientes.TabIndex = 6;
-			this.rTBxClientes.TabStop = false;
-			this.rTBxClientes.Text = "";
 			// 
 			// rTBxVentas
 			// 
@@ -160,18 +135,32 @@ namespace VistaForm
 			this.lblClientes.TabIndex = 10;
 			this.lblClientes.Text = "Lista de clientes:";
 			// 
+			// dtgvClientes
+			// 
+			this.dtgvClientes.AllowUserToResizeColumns = false;
+			this.dtgvClientes.AllowUserToResizeRows = false;
+			this.dtgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+			this.dtgvClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+			this.dtgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dtgvClientes.Location = new System.Drawing.Point(662, 33);
+			this.dtgvClientes.Name = "dtgvClientes";
+			this.dtgvClientes.RowHeadersWidth = 51;
+			this.dtgvClientes.RowTemplate.Height = 29;
+			this.dtgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dtgvClientes.Size = new System.Drawing.Size(456, 403);
+			this.dtgvClientes.TabIndex = 11;
+			// 
 			// FrmPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.ClientSize = new System.Drawing.Size(936, 533);
+			this.ClientSize = new System.Drawing.Size(1130, 533);
+			this.Controls.Add(this.dtgvClientes);
 			this.Controls.Add(this.lblClientes);
 			this.Controls.Add(this.lblDescVentas);
 			this.Controls.Add(this.lblVentas);
 			this.Controls.Add(this.rTBxVentas);
-			this.Controls.Add(this.rTBxClientes);
-			this.Controls.Add(this.lBxClientes);
 			this.Controls.Add(this.lBxVentas);
 			this.Controls.Add(this.btnPagarPend);
 			this.Controls.Add(this.btnBorrarCliente);
@@ -187,6 +176,7 @@ namespace VistaForm
 			this.Text = "Mi Farmacia";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPrincipal_FormClosing);
 			this.Load += new System.EventHandler(this.FrmPrincipal_Load);
+			((System.ComponentModel.ISupportInitialize)(this.dtgvClientes)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -199,12 +189,11 @@ namespace VistaForm
         private System.Windows.Forms.Button btnBorrarCliente;
         private System.Windows.Forms.Button btnPagarPend;
         private System.Windows.Forms.ListBox lBxVentas;
-        private System.Windows.Forms.ListBox lBxClientes;
-        private System.Windows.Forms.RichTextBox rTBxClientes;
         private System.Windows.Forms.RichTextBox rTBxVentas;
 		private System.Windows.Forms.Label lblVentas;
 		private System.Windows.Forms.Label lblDescVentas;
 		private System.Windows.Forms.Label lblClientes;
+		private System.Windows.Forms.DataGridView dtgvClientes;
 	}
 }
 

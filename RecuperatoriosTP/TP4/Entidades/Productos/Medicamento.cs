@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entidades.Productos
 {
+    //public delegate string DelegadoMedicamentoFuerte(string medicamento);
     public class Medicamento : Producto, IUsoDelProducto
     {
+        //public event DelegadoMedicamentoFuerte MedicamentoFuerte;
+
         private int mg;
         private EUso uso;
 
@@ -54,6 +57,7 @@ namespace Entidades.Productos
             else if(uso == EUso.Antialergico || uso == EUso.Antibiotico && this.mg >= 1000)
             {
                 ret = 12;
+                //MedicamentoFuerte?.Invoke();
             }
 
             return ret;

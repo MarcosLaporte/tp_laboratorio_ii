@@ -97,9 +97,9 @@ namespace Entidades.ADOs
 			return ret;
 		}
 
-		public static bool PagarDeuda(Cliente cliente)
+		public static bool CambiarDeuda(Cliente cliente, float valor)
 		{
-			return ClienteADO.PagarDeuda(cliente.Dni);
+			return ClienteADO.CambiarDeuda(cliente.Dni, valor);
 		}
 
 		/// <summary>
@@ -108,14 +108,15 @@ namespace Entidades.ADOs
 		/// </summary>
 		/// <param name="dni">El valor a buscar en la columna [dni].</param>
 		/// <returns>true si pudo modificarlo; false si no.</returns>
-		public static bool PagarDeuda(ulong dni)
+		public static bool CambiarDeuda(ulong dni, float valor)
 		{
 			bool ret = true;
 			try
 			{
 				comando.Parameters.Clear();
-				comando.CommandText = $"UPDATE clientes SET debe=0 WHERE dni=@dni";
-				comando.Parameters.AddWithValue("@dni", dni);
+				comando.CommandText = $"UPDATE clientes SET debe=@valor WHERE dni=@dni";
+				comando.Parameters.AddWithValue("@dni", (int)dni);
+				comando.Parameters.AddWithValue("@valor", valor);
 
 				conexion.Open();
 				comando.ExecuteNonQuery();

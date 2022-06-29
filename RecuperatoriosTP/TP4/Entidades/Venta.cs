@@ -7,7 +7,6 @@ using Entidades.Excepciones;
 
 namespace Entidades
 {
-    //public delegate Func<List<Cliente>, ulong, Cliente> DelegadoGetCliente();
     public class Venta
     {
         private float precio;
@@ -50,24 +49,5 @@ namespace Entidades
 		}
         #endregion
 
-        public string MostrarDatos(Venta venta, Cliente cliente)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine($"Precio total: {venta.precio:C}. ");
-            if (cliente is not null)
-                sb.AppendLine($"A nombre de {cliente.Apellido}, {cliente.Nombre}. ");
-            else
-                sb.AppendLine($"El cliente ya no se encuentra disponible. ");
-
-            sb.AppendLine($"Pagó: {venta.senia:C}. ");
-            sb.AppendLine($"\nProductos comprados: ");
-			foreach (Producto item in venta.productos)
-			{
-                sb.AppendLine($"{item}");
-			}
-
-            return sb.ToString();
-        }
     }
 }

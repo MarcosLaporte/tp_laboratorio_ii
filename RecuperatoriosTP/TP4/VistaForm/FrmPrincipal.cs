@@ -9,8 +9,6 @@ namespace VistaForm
 {
 	public partial class FrmPrincipal : Form
 	{
-		private List<Cliente> clientes;
-		private List<Producto> productos;
 		private List<Venta> ventas;
 		private FrmAgregarCliente formAgregarCliente;
 		private FrmAgregarPedido formAgregarPedido;
@@ -21,33 +19,33 @@ namespace VistaForm
 		}
 		private void FrmPrincipal_Load(object sender, EventArgs e)
 		{
-			this.lBxClientes.Items.Clear();
-			this.lBxVentas.Items.Clear();
-
-			//this.clientes = Serializadora<List<Cliente>>.Leer("ListaDeClientes");
-			this.clientes = ClienteADO.ObtenerTodos();
-			this.clientes.ForEach((item) => this.lBxClientes.Items.Add(item.Dni));
-
-			//this.productos = Serializadora<List<Producto>>.Leer("ListaDeProductos");
-			this.productos = ProductoADO.ObtenerTodos();
-
 			this.ventas = Serializadora<List<Venta>>.Leer("ListaDeVentas");
-			this.ventas.ForEach((item) => this.lBxVentas.Items.Add(item.MostrarDatos(item,
-										Cliente.GetClientePorDni(this.clientes, item.DniCliente))));
+
+			this.lBxVentas.Items.Clear();
+			if (this.ventas is not null)
+			{
+				this.ventas.ForEach((item) => this.lBxVentas.Items.Add(item.Datos()));
+			}
+			else
+			{
+				this.ventas = new();
+			}
+
+			this.RefrescarClientes();
 		}
+
 		private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			DialogResult res = MessageBox.Show("Desea guardar los cambios realizados?",
-						"Warning!", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+			DialogResult res = MessageBox.Show("Desea cerrar la aplicación?",
+						"Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-			if (res == DialogResult.Cancel)
+			if (res == DialogResult.No)
 			{
 				e.Cancel = true;
 			}
-			else if(res == DialogResult.Yes)
+			else
 			{
-				ClienteADO.Sobreescribir(this.clientes);
-				Serializadora<List<Cliente>>.Escribir(this.clientes, "ListaDeClientes");
+				Serializadora<List<Cliente>>.Escribir((List<Cliente>)dtgvClientes.DataSource, "ListaDeClientes");
 				Serializadora<List<Venta>>.Escribir(this.ventas, "ListaDeVentas");
 			}
 		}
@@ -55,68 +53,34 @@ namespace VistaForm
 		private void btnAgregarCliente_Click(object sender, EventArgs e)
 		{
 			this.formAgregarCliente = new FrmAgregarCliente();
-			this.formAgregarCliente.ClientesExistentes = this.clientes;
+			this.formAgregarCliente.ClientesExistentes = ClienteADO.ObtenerTodos();
 			formAgregarCliente.ShowDialog();
 
 			if (formAgregarCliente.DialogResult == DialogResult.OK)
 			{
-				Cliente nuevoCliente = formAgregarCliente.ClienteCreado;
-
-				if(Cliente.AgregarCliente(ref this.clientes, nuevoCliente))
-				{
-					ClienteADO.Agregar(nuevoCliente);
-					this.lBxClientes.Items.Add(nuevoCliente.Dni);
-				}
-			}
-		}
-
-		private void lBxClientes_Click(object sender, EventArgs e)
-		{
-			object item = this.lBxClientes.SelectedItem;
-			if (item is not null)
-			{
-				string stringDni = item.ToString();
-				Cliente clienteElegido = Cliente.GetClientePorDni(clientes, ulong.Parse(stringDni));
-
-				if (clienteElegido is null)
-				{
-					this.rTBxClientes.Text = "El cliente ya no existe.";
-					this.lBxClientes.Items.Remove(item);
-				}
-				else
-				{
-					this.rTBxClientes.Text = clienteElegido.ToString();
-				}
+				ClienteADO.Agregar(formAgregarCliente.ClienteCreado);
+				this.RefrescarClientes();
 			}
 		}
 
 		private void btnAgregarPedido_Click(object sender, EventArgs e)
 		{
-			object item = this.lBxClientes.SelectedItem;
-			if (item is not null)
+			Cliente cliente = (Cliente)dtgvClientes.CurrentRow.DataBoundItem;
+
+			if (cliente is not null)
 			{
-				string stringDni = item.ToString();
-				Cliente clienteElegido = Cliente.GetClientePorDni(clientes, ulong.Parse(stringDni));
+				this.formAgregarPedido = new FrmAgregarPedido();
+				this.formAgregarPedido.ProductosDisponibles = ProductoADO.ObtenerTodos();
+				this.formAgregarPedido.Cliente = cliente;
 
-				if (clienteElegido is not null)
+				formAgregarPedido.ShowDialog();
+				if (formAgregarPedido.DialogResult == DialogResult.OK)
 				{
-					this.formAgregarPedido = new FrmAgregarPedido();
-					this.formAgregarPedido.ProductosDisponibles = productos;
-					this.formAgregarPedido.Cliente = clienteElegido;
-					clienteElegido.Debe += this.formAgregarPedido.Cliente.Debe;
-
-					formAgregarPedido.ShowDialog();
-					if (formAgregarPedido.DialogResult == DialogResult.OK)
-					{
-						Venta nuevaVenta = formAgregarPedido.Venta;
-						Cliente clienteDeVenta = Cliente.GetClientePorDni(this.clientes, formAgregarPedido.Cliente.Dni);
-						this.ventas.Add(nuevaVenta);
-						this.lBxVentas.Items.Add(nuevaVenta.MostrarDatos(nuevaVenta, clienteDeVenta));
-					}
-				}
-				else
-				{
-					MessageBox.Show("El cliente es nulo.");
+					Venta nuevaVenta = formAgregarPedido.Venta;
+					this.ventas.Add(nuevaVenta);
+					this.lBxVentas.Items.Add(nuevaVenta.Datos());
+					ClienteADO.CambiarDeuda(cliente, cliente.Debe);
+					this.RefrescarClientes();
 				}
 			}
 			else
@@ -136,26 +100,16 @@ namespace VistaForm
 
 		private void btnBorrarCliente_Click(object sender, EventArgs e)
 		{
-			object item = this.lBxClientes.SelectedItem;
-			if (item is not null)
+			Cliente cliente = (Cliente)dtgvClientes.CurrentRow.DataBoundItem;
+
+			if (cliente is not null)
 			{
-				string stringDni = item.ToString();
-				Cliente cliente = Cliente.GetClientePorDni(clientes, ulong.Parse(stringDni));
-
-				if (cliente is not null)
+				DialogResult res = MessageBox.Show($"Seguro que desea eliminar a {cliente.Nombre} {cliente.Apellido}?",
+							"Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+				if (res == DialogResult.Yes)
 				{
-
-					DialogResult res = MessageBox.Show($"Seguro que desea eliminar a {cliente.Nombre} {cliente.Apellido}?",
-								"Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-					if (res == DialogResult.Yes)
-					{
-						this.clientes.Remove(cliente);
-						this.lBxClientes.Items.Remove(cliente.Dni);
-					}
-				}
-				else
-				{
-					MessageBox.Show("El cliente es nulo.");
+					ClienteADO.Eliminar(cliente);
+					this.RefrescarClientes();
 				}
 			}
 			else
@@ -166,25 +120,17 @@ namespace VistaForm
 
 		private void btnPagarPend_Click(object sender, EventArgs e)
 		{
-			object item = this.lBxClientes.SelectedItem;
-			if (item is not null)
-			{
-				string stringDni = item.ToString();
-				Cliente cliente = Cliente.GetClientePorDni(clientes, ulong.Parse(stringDni));
+			Cliente cliente = (Cliente)dtgvClientes.CurrentRow.DataBoundItem;
 
-				if (cliente is not null)
+			if (cliente is not null)
+			{
+				DialogResult res = MessageBox.Show($"Desea eliminar la deuda de {cliente.Nombre} {cliente.Apellido}?",
+							"Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+				if (res == DialogResult.Yes)
 				{
-					DialogResult res = MessageBox.Show($"Desea eliminar la deuda de {cliente.Nombre} {cliente.Apellido}?",
-								"Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-					if (res == DialogResult.Yes)
-					{
-						cliente.Debe = 0;
-						ClienteADO.PagarDeuda(cliente);
-					}
-				}
-				else
-				{
-					MessageBox.Show("El cliente es nulo.");
+					cliente.Debe = 0;
+					ClienteADO.CambiarDeuda(cliente, 0);
+					this.RefrescarClientes();
 				}
 			}
 			else
@@ -217,6 +163,20 @@ namespace VistaForm
 			}
 
 			return nuevaCadena;
+		}
+
+		private void RefrescarClientes()
+		{
+			try
+			{
+				this.dtgvClientes.DataSource = ClienteADO.ObtenerTodos();
+				this.dtgvClientes.Refresh();
+				this.dtgvClientes.Update();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
 		}
 	}
 }

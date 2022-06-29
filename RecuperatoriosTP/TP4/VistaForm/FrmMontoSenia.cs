@@ -10,8 +10,11 @@ using System.Windows.Forms;
 
 namespace VistaForm
 {
+    public delegate void DelegadoSeniaInvalida(float valor);
     public partial class FrmMontoSenia : Form
     {
+        public event DelegadoSeniaInvalida SeniaInvalida;
+
         private float seniaVenta;
         private float precioVenta;
 
@@ -23,6 +26,7 @@ namespace VistaForm
         private void FrmMontoSenia_Load(object sender, EventArgs e)
         {
             this.rBtnCompleto.Text += $" ({this.precioVenta:C})";
+            SeniaInvalida += ManejadorSeniaInvalida;
         }
 
         public float SeniaVenta
@@ -38,6 +42,7 @@ namespace VistaForm
         {
             bool valorOk = true;
             float senia = -1;
+
 			if (rBtnCompleto.Checked)
             {
                 senia = -1;
@@ -50,14 +55,19 @@ namespace VistaForm
             {
                 if(!float.TryParse(this.tBxSenia.Text, out float seniaIndicada) || seniaIndicada < 0)
                 {
-                    MessageBox.Show("Ingrese un valor válido.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ingrese un valor válido.", "Monto inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     valorOk = false;
                 }
                 else if(seniaIndicada > precioVenta)
 				{
-                    MessageBox.Show("No puede abonar de más.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No puede abonar de más.", "Monto inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     valorOk = false;
                 }
+                else if(seniaIndicada < precioVenta * 0.5)
+				{
+                    SeniaInvalida?.Invoke(seniaIndicada);
+                    senia = 0;
+				}
                 else
                 {
                     senia = seniaIndicada;
@@ -65,7 +75,7 @@ namespace VistaForm
 			}
 			else
 			{
-                MessageBox.Show("ERROR!", "Debe seleccionar una casilla.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar una opción.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 valorOk = false;
             }
 
@@ -81,5 +91,9 @@ namespace VistaForm
             this.Close();
         }
 
-	}
+        public void ManejadorSeniaInvalida(float valor)
+		{
+            MessageBox.Show($"No puede abonar menos que el 5% del total.\nSus {valor:C} se tomará como $0.", "Monto inválido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    }
 }
