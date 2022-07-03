@@ -8,7 +8,7 @@ namespace VistaForm
 {
 	public partial class FrmAgregarCliente : Form
 	{
-		private Cliente clienteCreado;
+		private Cliente clienteCreado = null;
 		private List<Cliente> clientesExistentes;
 		public FrmAgregarCliente()
 		{
@@ -18,7 +18,6 @@ namespace VistaForm
 		public Cliente ClienteCreado
 		{
 			get { return this.clienteCreado; }
-			set { this.clienteCreado = value; }
 		}
 		public List<Cliente> ClientesExistentes
 		{
@@ -34,10 +33,10 @@ namespace VistaForm
 			try
 			{
 				ulong dni = ulong.Parse(this.tBxDni.Text);
-				Cliente posibleClienteExistente = Cliente.GetClientePorDni(this.clientesExistentes, dni);
-				if(posibleClienteExistente is null)
+				Cliente cliente = new Cliente(nombre, apellido, telefono, dni);
+				if (this.clientesExistentes != cliente)
 				{
-					this.ClienteCreado = new Cliente(nombre, apellido, telefono, dni);
+					this.clienteCreado = cliente;
 					this.DialogResult = DialogResult.OK;
 				}
 				else

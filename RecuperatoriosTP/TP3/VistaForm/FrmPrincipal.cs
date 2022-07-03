@@ -2,6 +2,7 @@
 using Entidades.Excepciones;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Windows.Forms;
 
 namespace VistaForm
@@ -42,7 +43,7 @@ namespace VistaForm
 			}
 			foreach (Venta item in this.ventas)
 			{
-				this.lBxVentas.Items.Add(item.MostrarDatos(item));
+				this.lBxVentas.Items.Add(Venta.MostrarDatos(item));
 			}
 		}
 		private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -58,6 +59,7 @@ namespace VistaForm
 			{
 				Serializadora<List<Cliente>>.Escribir(this.clientes, "ListaDeClientes");
 				Serializadora<List<Venta>>.Escribir(ventas, "ListaDeVentas");
+				FrmPrincipal.EscribirVentasEnTxt(this.ventas);
 			}
 		}
 
@@ -118,7 +120,7 @@ namespace VistaForm
 					{
 						Venta nuevaVenta = formAgregarPedido.Venta;
 						this.ventas.Add(nuevaVenta);
-						this.lBxVentas.Items.Add(nuevaVenta.MostrarDatos(nuevaVenta));
+						this.lBxVentas.Items.Add(Venta.MostrarDatos(nuevaVenta));
 					}
 				}
 				else
@@ -214,6 +216,19 @@ namespace VistaForm
 			}
 
 			return nuevaCadena;
+		}
+
+		private static void EscribirVentasEnTxt(List<Venta> ventas)
+		{
+			StringBuilder sb = new();
+			sb.AppendLine($"Cantidad de ventas: {ventas.Count}:");
+			sb.AppendLine("========================");
+			foreach (Venta item in ventas)
+			{
+				sb.AppendLine(Venta.MostrarDatos(item) + "\n----------\n"));
+			}
+
+			ArchivoTxt.Escribir(sb.ToString(), "ListaDeVentas");
 		}
 	}
 }

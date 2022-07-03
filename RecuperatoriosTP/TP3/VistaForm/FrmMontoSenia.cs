@@ -65,7 +65,7 @@ namespace VistaForm
 			}
 			else
 			{
-                MessageBox.Show("ERROR!", "Debe seleccionar una casilla.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar una casilla.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 valorOk = false;
             }
 

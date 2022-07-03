@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Marco\\Estudios\\UTN\\2do CUATRI\\Laboratorio-Programación II\\tp_laboratorio_ii\\TP3\\VistaForm\\VistaForm.csproj",
+      "projectUniqueName": "C:\\Users\\Marco\\Estudios\\UTN\\2do CUATRI\\Laboratorio-Programación II\\tp_laboratorio_ii\\RecuperatoriosTP\\TP3\\VistaForm\\VistaForm.csproj",
       "projectName": "VistaForm",
-      "projectPath": "C:\\Users\\Marco\\Estudios\\UTN\\2do CUATRI\\Laboratorio-Programación II\\tp_laboratorio_ii\\TP3\\VistaForm\\VistaForm.csproj",
+      "projectPath": "C:\\Users\\Marco\\Estudios\\UTN\\2do CUATRI\\Laboratorio-Programación II\\tp_laboratorio_ii\\RecuperatoriosTP\\TP3\\VistaForm\\VistaForm.csproj",
       "packagesPath": "C:\\Users\\Marco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Marco\\Estudios\\UTN\\2do CUATRI\\Laboratorio-Programación II\\tp_laboratorio_ii\\TP3\\VistaForm\\obj\\",
+      "outputPath": "C:\\Users\\Marco\\Estudios\\UTN\\2do CUATRI\\Laboratorio-Programación II\\tp_laboratorio_ii\\RecuperatoriosTP\\TP3\\VistaForm\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\Marco\\Estudios\\UTN\\2do CUATRI\\Laboratorio-Programación II\\tp_laboratorio_ii\\TP3\\Entidades\\Entidades.csproj": {
-              "projectPath": "C:\\Users\\Marco\\Estudios\\UTN\\2do CUATRI\\Laboratorio-Programación II\\tp_laboratorio_ii\\TP3\\Entidades\\Entidades.csproj"
+            "C:\\Users\\Marco\\Estudios\\UTN\\2do CUATRI\\Laboratorio-Programación II\\tp_laboratorio_ii\\RecuperatoriosTP\\TP3\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\Marco\\Estudios\\UTN\\2do CUATRI\\Laboratorio-Programación II\\tp_laboratorio_ii\\RecuperatoriosTP\\TP3\\Entidades\\Entidades.csproj"
             }
           }
         }

@@ -49,7 +49,7 @@ namespace Entidades
 		}
         #endregion
 
-        public string MostrarDatos(Venta venta)
+        public static string MostrarDatos(Venta venta)
         {
             StringBuilder sb = new StringBuilder();
 
