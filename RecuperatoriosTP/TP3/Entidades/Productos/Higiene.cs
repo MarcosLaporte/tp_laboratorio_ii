@@ -19,10 +19,5 @@ namespace Entidades.Productos
         {
             return base.Datos(p);
         }
-
-        public override string ToString()
-        {
-            return this.Datos(this);
-        }
     }
 }

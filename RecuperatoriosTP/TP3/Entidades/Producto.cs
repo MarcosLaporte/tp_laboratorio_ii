@@ -68,6 +68,12 @@ namespace Entidades
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Busca en la lista pasada por parámetro algún Producto que concuerde con el [id].
+        /// </summary>
+        /// <param name="lista">La lista donde buscar.</param>
+        /// <param name="id">El id que buscar.</param>
+        /// <returns>Retorna el Producto si lo encuentra; si no nulo.</returns>
         public static Producto GetProductoPorId(List<Producto> lista, int id)
         {
             Producto miProducto = null;

@@ -64,5 +64,31 @@ namespace Entidades
 
             return sb.ToString();
         }
+
+        public static bool EscribirVentasEnTxt(List<Venta> ventas)
+        {
+            bool ret = true;
+            StringBuilder sb = new();
+            sb.AppendLine($"Cantidad de ventas: {ventas.Count}");
+            if (ventas.Count != 0)
+            {
+                sb.AppendLine("========================");
+				foreach (Venta item in ventas)
+				{
+                    sb.AppendLine(Venta.MostrarDatos(item) + "\n-----------------\n");
+				}
+            }
+
+            try
+            {
+                ArchivoTxt.Escribir(sb.ToString(), "ListaDeVentas");
+            }
+            catch (Exception)
+            {
+                ret = false;
+            }
+
+            return ret;
+        }
     }
 }

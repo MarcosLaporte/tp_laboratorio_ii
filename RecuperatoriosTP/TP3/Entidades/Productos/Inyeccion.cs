@@ -57,10 +57,5 @@ namespace Entidades.Productos
             return base.Datos(p) + $"Inyección de {((Inyeccion)p).cc:D}cc\n"
                 + $"Cada {((Inyeccion)p).AdministrarDosis(this.uso)} años.\n";
         }
-
-        public override string ToString()
-        {
-            return this.Datos(this);
-        }
     }
 }

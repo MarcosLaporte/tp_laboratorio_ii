@@ -46,6 +46,7 @@ namespace VistaForm
 				this.lBxVentas.Items.Add(Venta.MostrarDatos(item));
 			}
 		}
+
 		private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			DialogResult res = MessageBox.Show("Desea guardar los cambios realizados?",
@@ -59,7 +60,7 @@ namespace VistaForm
 			{
 				Serializadora<List<Cliente>>.Escribir(this.clientes, "ListaDeClientes");
 				Serializadora<List<Venta>>.Escribir(ventas, "ListaDeVentas");
-				FrmPrincipal.EscribirVentasEnTxt(this.ventas);
+				Venta.EscribirVentasEnTxt(this.ventas);
 			}
 		}
 
@@ -125,7 +126,7 @@ namespace VistaForm
 				}
 				else
 				{
-					MessageBox.Show("El cliente es nulo.");
+					MessageBox.Show("El cliente no existe.");
 				}
 			}
 			else
@@ -201,8 +202,13 @@ namespace VistaForm
 			}
 		}
 
-
-		//MIS FUNCIONES
+		/// <summary>
+		/// Recorre una cadena y copia cada uno de sus caracteres 
+		/// hasta que encuentra el mismo pasado por parámetro.
+		/// </summary>
+		/// <param name="cadena">La cadena a recorrer.</param>
+		/// <param name="caracter">El caracter a encontrar.</param>
+		/// <returns>La nueva cadena cortada.</returns>
 		public static string CortarStringEnCaracter(string cadena, char caracter)
 		{
 			string nuevaCadena = "";
@@ -216,19 +222,6 @@ namespace VistaForm
 			}
 
 			return nuevaCadena;
-		}
-
-		private static void EscribirVentasEnTxt(List<Venta> ventas)
-		{
-			StringBuilder sb = new();
-			sb.AppendLine($"Cantidad de ventas: {ventas.Count}:");
-			sb.AppendLine("========================");
-			foreach (Venta item in ventas)
-			{
-				sb.AppendLine(Venta.MostrarDatos(item) + "\n----------\n"));
-			}
-
-			ArchivoTxt.Escribir(sb.ToString(), "ListaDeVentas");
 		}
 	}
 }

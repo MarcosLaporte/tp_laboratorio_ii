@@ -126,4 +126,25 @@
       </Producto>
     </Productos>
   </Venta>
+  <Venta>
+    <Precio>1031.61</Precio>
+    <Senia>1031.61</Senia>
+    <Cliente>
+      <Nombre>Axe</Nombre>
+      <Apellido>Gavrielli</Apellido>
+      <Telefono>9133370598</Telefono>
+      <Dni>49827708</Dni>
+      <Debe>0</Debe>
+    </Cliente>
+    <Productos>
+      <Producto xsi:type="Inyeccion">
+        <Id>24</Id>
+        <Descripcion>Standardized Senna Concentrate</Descripcion>
+        <Precio>1031.61</Precio>
+        <Tipo>Inyeccion</Tipo>
+        <Cc>9</Cc>
+        <Uso>Antialergico</Uso>
+      </Producto>
+    </Productos>
+  </Venta>
 </ArrayOfVenta>

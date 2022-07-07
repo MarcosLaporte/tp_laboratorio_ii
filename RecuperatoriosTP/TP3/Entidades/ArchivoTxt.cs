@@ -13,9 +13,9 @@ namespace Entidades
 
 		static ArchivoTxt()
 		{
-			ruta = @"../../../../Entidades/Archivos";
-		}
-
+            ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        }
+        
         public static void Escribir(string datos, string archivo)
         {
             string nombreArchivo = $@"{ruta}\{archivo}.txt";
@@ -32,41 +32,6 @@ namespace Entidades
             {
                 throw new Exception($"Error en el archivo ubicado en {ruta}\n{ex.Message}");
             }
-        }
-
-        public static string Leer(string nombre)
-        {
-            string archivo = string.Empty;
-            string datosLeidos = string.Empty;
-            string nombreArchivo = $@"{ruta}\{nombre}.txt";
-
-            try
-            {
-                if (Directory.Exists(ruta))
-                {
-                    string[] archivosEnElPath = Directory.GetFiles(ruta);
-                    foreach (string ruta in archivosEnElPath)
-                    {
-                        if (ruta.Contains(nombreArchivo))
-                        {
-                            archivo = ruta;
-                            break;
-                        }
-                    }
-
-                    if (archivo is not null)
-                    {
-                        datosLeidos = File.ReadAllText(archivo);
-                    }
-                }
-
-                return datosLeidos;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error en el archivo ubicado en {ruta}\n{ex.Message}");
-            }
-
         }
     }
 }
