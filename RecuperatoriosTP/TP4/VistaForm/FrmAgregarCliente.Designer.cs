@@ -99,6 +99,7 @@ namespace VistaForm
 			// 
 			// btnAgregar
 			// 
+			this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnAgregar.Location = new System.Drawing.Point(12, 246);
 			this.btnAgregar.Name = "btnAgregar";
 			this.btnAgregar.Size = new System.Drawing.Size(225, 73);
@@ -109,6 +110,7 @@ namespace VistaForm
 			// 
 			// btnCancelar
 			// 
+			this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnCancelar.Location = new System.Drawing.Point(245, 246);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(225, 73);
@@ -166,7 +168,6 @@ namespace VistaForm
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblDni;

@@ -14,6 +14,15 @@ namespace VistaForm
 		{
 			InitializeComponent();
 		}
+		public FrmAgregarCliente(Cliente clienteAModificar) : this()
+		{
+			this.tBxNombre.Text = clienteAModificar.Nombre;
+			this.tBxApellido.Text = clienteAModificar.Apellido;
+			this.tBxTelefono.Text = clienteAModificar.Telefono;
+			this.tBxDni.Text = clienteAModificar.Dni.ToString();
+			this.tBxDni.ReadOnly = true;
+			this.btnAgregar.Text = "Modificar";
+		}
 
 		public Cliente ClienteCreado
 		{
@@ -35,7 +44,7 @@ namespace VistaForm
 			{
 				ulong dni = ulong.Parse(this.tBxDni.Text);
 				Cliente cliente = new Cliente(nombre, apellido, telefono, dni);
-				if(clientesExistentes != cliente)
+				if (this.btnAgregar.Text == "Modificar" || clientesExistentes != cliente)
 				{
 					this.ClienteCreado = cliente;
 					this.DialogResult = DialogResult.OK;

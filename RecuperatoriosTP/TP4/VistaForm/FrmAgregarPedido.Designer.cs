@@ -95,6 +95,7 @@ namespace VistaForm
 			// 
 			// btnAgregar
 			// 
+			this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnAgregar.Location = new System.Drawing.Point(281, 23);
 			this.btnAgregar.Name = "btnAgregar";
 			this.btnAgregar.Size = new System.Drawing.Size(195, 77);
@@ -105,6 +106,7 @@ namespace VistaForm
 			// 
 			// btnCancelar
 			// 
+			this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnCancelar.Location = new System.Drawing.Point(281, 116);
 			this.btnCancelar.Name = "btnCancelar";
 			this.btnCancelar.Size = new System.Drawing.Size(195, 77);
@@ -134,6 +136,7 @@ namespace VistaForm
 			// 
 			// btnRePedido
 			// 
+			this.btnRePedido.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnRePedido.Location = new System.Drawing.Point(281, 208);
 			this.btnRePedido.Name = "btnRePedido";
 			this.btnRePedido.Size = new System.Drawing.Size(195, 77);

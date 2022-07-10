@@ -2,12 +2,6 @@
 using Entidades.Productos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VistaForm
@@ -29,10 +23,10 @@ namespace VistaForm
 		}
 
 		public Cliente Cliente
-        {
-            get { return this.cliente; }
-            set { this.cliente = value; }
-        }
+		{
+			get { return this.cliente; }
+			set { this.cliente = value; }
+		}
 		public List<Producto> ProductosDisponibles
 		{
 			get { return this.productosDisponibles; }
@@ -80,10 +74,11 @@ namespace VistaForm
 			object productoSeleccionado = this.cBxProducto.SelectedItem;
 			if (productoSeleccionado is not null)
 			{
-				string stringId = FrmPrincipal.CortarStringEnCaracter(productoSeleccionado.ToString(), ':');
+				string prod = productoSeleccionado.ToString();
+				string stringId = prod.CortarEnCaracter(':');
 				if (int.TryParse(stringId, out int id))
 				{
-					Producto producto = Producto.GetProductoPorId(productosDisponibles, id);
+					Producto producto = id.GetProductoPorId(productosDisponibles);
 					if (producto is not null)
 					{
 						this.lblPrecioUnidad.Text = $"{producto.Precio:C}";
@@ -97,10 +92,11 @@ namespace VistaForm
 			object item = this.cBxProducto.SelectedItem;
 			if (item is not null)
 			{
-				string stringId = FrmPrincipal.CortarStringEnCaracter(item.ToString(), ':');
+				string it = item.ToString();
+				string stringId = it.CortarEnCaracter(':');
 				if (int.TryParse(stringId, out int id))
 				{
-					Producto productoElegido = Producto.GetProductoPorId(productosDisponibles, id);
+					Producto productoElegido = id.GetProductoPorId(productosDisponibles);
 					if (productoElegido is not null)
 					{
 						this.carrito.Add(productoElegido);
@@ -143,8 +139,8 @@ namespace VistaForm
 			}
 		}
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
+		private void btnCancelar_Click(object sender, EventArgs e)
+		{
 			DialogResult res = MessageBox.Show("Seguro que desea cancelar el pedido?",
 						"Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -153,5 +149,5 @@ namespace VistaForm
 				this.Close();
 			}
 		}
-    }
+	}
 }
