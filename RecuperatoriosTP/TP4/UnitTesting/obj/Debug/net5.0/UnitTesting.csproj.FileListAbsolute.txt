@@ -202,3 +202,12 @@ C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laborator
 C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\TP3\UnitTesting\obj\Debug\net5.0\ref\UnitTesting.dll
 C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\TP3\UnitTesting\obj\Debug\net5.0\UnitTesting.pdb
 C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\TP3\UnitTesting\obj\Debug\net5.0\UnitTesting.genruntimeconfig.cache
+C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\UnitTesting\bin\Debug\net5.0\CoverletSourceRootsMapping
+C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\UnitTesting\obj\Debug\net5.0\UnitTesting.csproj.AssemblyReference.cache
+C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\UnitTesting\obj\Debug\net5.0\UnitTesting.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\UnitTesting\obj\Debug\net5.0\UnitTesting.AssemblyInfoInputs.cache
+C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\UnitTesting\obj\Debug\net5.0\UnitTesting.AssemblyInfo.cs
+C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\UnitTesting\obj\Debug\net5.0\UnitTesting.csproj.CoreCompileInputs.cache
+C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\UnitTesting\obj\Debug\net5.0\UnitTesting.dll
+C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\UnitTesting\obj\Debug\net5.0\ref\UnitTesting.dll
+C:\Users\Marco\Estudios\UTN\2do CUATRI\Laboratorio-Programación II\tp_laboratorio_ii\RecuperatoriosTP\TP4\UnitTesting\obj\Debug\net5.0\UnitTesting.pdb

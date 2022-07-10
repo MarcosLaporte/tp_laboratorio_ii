@@ -1,59 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 
 namespace Entidades.ADOs
 {
-	//Deshabilitada por el momento...
 	public class VentaADO
 	{
-		/*static string connectionStr;
-		static SqlCommand comando;
-		static SqlConnection conexion;
-
-		static VentaADO()
-		{
-			connectionStr = @"Data Source=.;Initial Catalog=FARMACIA_DB;Integrated Security=True";
-			comando = new SqlCommand();
-			conexion = new SqlConnection(connectionStr);
-
-			comando.Connection = conexion;
-			comando.CommandType = System.Data.CommandType.Text;
-		}
-
-		public static List<Venta> ObtenerTodos()
+		public static List<Venta> ObtenerTodas()
 		{
 			List<Venta> ventas = new List<Venta>();
 
 			try
 			{
-				comando.CommandText = "SELECT * FROM ventas";
-				conexion.Open();
-				SqlDataReader dataReader = comando.ExecuteReader();
-				XmlReader xmlReader = comando.ExecuteXmlReader();
+				ADO.Comando.CommandText = "SELECT * FROM ventas";
+				ADO.Conexion.Open();
+				SqlDataReader dataReader = ADO.Comando.ExecuteReader();
 
 				while (dataReader.Read())
 				{
-					float precio = dataReader.GetFloat(0);
-					float senia = dataReader.GetFloat(1);
-					int dniCliente = dataReader.GetInt32(2);
-					List<Producto> productos = Serializadora<List<Producto>>.Leer(dataReader.GetSqlXml(3));
+					int id = dataReader.GetInt32(0);
+					float precio = (float)dataReader.GetDouble(1);
+					float senia = (float)dataReader.GetDouble(2);
+					ulong dniCliente = (ulong)dataReader.GetInt32(3);
+					List<Producto> productos = new List<Producto>();
 
-					ventas.Add(new Venta());
+					ventas.Add(new Venta(id, precio, senia, dniCliente, productos));
 				}
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-
-				throw;
+				throw new Exception(ex.Message);
 			}
 			finally
 			{
-				conexion.Close();
+				ADO.Conexion.Close();
 			}
 
 			return ventas;
@@ -65,67 +45,52 @@ namespace Entidades.ADOs
 			try
 			{
 
-				comando.Parameters.Clear();
-				comando.CommandText = $"INSERT INTO ventas(descripcion, precio, tipo, cc, mg, uso) VALUES(@descripcion, @precio, @tipo, @cc, @mg, @uso)";
-				comando.Parameters.AddWithValue("@descripcion", venta.Descripcion);
-				comando.Parameters.AddWithValue("@precio", venta.Precio);
-				comando.Parameters.AddWithValue("@tipo", (int)venta.Tipo);
+				ADO.Comando.Parameters.Clear();
+				ADO.Comando.CommandText = $"INSERT INTO ventas(precio, senia, dniCliente) VALUES(@precio, @senia, @dniCliente)";
+				ADO.Comando.Parameters.AddWithValue("@precio", venta.Precio);
+				ADO.Comando.Parameters.AddWithValue("@senia", venta.Senia);
+				ADO.Comando.Parameters.AddWithValue("@dniCliente", (int)venta.DniCliente);
 
-				if (venta is Inyeccion)
-				{
-					comando.Parameters.AddWithValue("@cc", ((Inyeccion)venta).Cc);
-					comando.Parameters.AddWithValue("@uso", (int)((Inyeccion)venta).Uso);
-				}
-				else if (venta is Medicamento)
-				{
-					comando.Parameters.AddWithValue("@mg", ((Medicamento)venta).Mg);
-					comando.Parameters.AddWithValue("@uso", (int)((Medicamento)venta).Uso);
-				}
-
-				conexion.Open();
-				comando.ExecuteNonQuery();
+				ADO.Conexion.Open();
+				ADO.Comando.ExecuteNonQuery();
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 				ret = false;
-				throw;
+				throw new Exception(ex.Message);
 			}
 			finally
 			{
-				conexion.Close();
+				ADO.Conexion.Close();
 			}
 
 			return ret;
 		}
 
-		public static bool Eliminar(Venta venta)
+		public static int ObtenerUltimaVenta()
 		{
-			return VentaADO.Eliminar(venta.Id);
-		}
-		public static bool Eliminar(int id)
-		{
-			bool ret = true;
-
+			int maxId = 0;
 			try
 			{
-				comando.Parameters.Clear();
-				comando.CommandText = $"DELETE FROM ventas WHERE id=@id";
-				comando.Parameters.AddWithValue("@id", id);
-				conexion.Open();
-				comando.ExecuteNonQuery();
+				ADO.Comando.CommandText = "SELECT MAX(id) FROM ventas";
+				ADO.Conexion.Open();
+				SqlDataReader dataReader = ADO.Comando.ExecuteReader();
 
+				while (dataReader.Read())
+				{
+					maxId = dataReader.GetInt32(0);
+				}
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				ret = false;
-				throw;
+				throw new Exception(ex.Message);
 			}
 			finally
 			{
-				conexion.Close();
+				ADO.Conexion.Close();
 			}
 
-			return ret;
-		}*/
+			return maxId;
+		}
 	}
 }

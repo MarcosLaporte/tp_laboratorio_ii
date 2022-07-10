@@ -1,12 +1,12 @@
 ﻿public enum ETipo
 {
-   Medicamento,
-   Inyeccion,
-   Higiene
+	Medicamento,
+	Inyeccion,
+	Higiene
 }
 public enum EUso
 {
-    Analgesico,
-    Antibiotico,
-    Antialergico
+	Analgesico,
+	Antibiotico,
+	Antialergico
 }

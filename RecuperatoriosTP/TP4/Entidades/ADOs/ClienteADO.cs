@@ -1,28 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades.ADOs
 {
-	public static class ClienteADO
+	public class ClienteADO
 	{
-		static string connectionStr;
-		static SqlCommand comando;
-		static SqlConnection conexion;
-
-		static ClienteADO()
-		{
-			connectionStr = @"Data Source=.;Initial Catalog=FARMACIA_DB;Integrated Security=True";
-			comando = new SqlCommand();
-			conexion = new SqlConnection(connectionStr);
-
-			comando.Connection = conexion;
-			comando.CommandType = System.Data.CommandType.Text;
-		}
-
 		/// <summary>
 		/// Lee la base de datos y guarda estos en una lista del tipo Cliente.
 		/// </summary>
@@ -34,9 +17,9 @@ namespace Entidades.ADOs
 
 			try
 			{
-				comando.CommandText = "SELECT * FROM clientes";
-				conexion.Open();
-				SqlDataReader dataReader = comando.ExecuteReader();
+				ADO.Comando.CommandText = "SELECT * FROM clientes";
+				ADO.Conexion.Open();
+				SqlDataReader dataReader = ADO.Comando.ExecuteReader();
 
 				while (dataReader.Read())
 				{
@@ -49,14 +32,13 @@ namespace Entidades.ADOs
 					clientes.Add(new Cliente(nombre, apellido, telefono, dni, debe));
 				}
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-
-				throw;
+				throw new Exception(ex.Message);
 			}
 			finally
 			{
-				conexion.Close();
+				ADO.Conexion.Close();
 			}
 
 			return clientes;
@@ -73,25 +55,25 @@ namespace Entidades.ADOs
 			try
 			{
 
-				comando.Parameters.Clear();
-				comando.CommandText = $"INSERT INTO clientes(nombre, apellido, telefono, dni, debe) VALUES(@nombre, @apellido, @telefono, @dni, @debe)";
-				comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
-				comando.Parameters.AddWithValue("@apellido", cliente.Apellido);
-				comando.Parameters.AddWithValue("@telefono", cliente.Telefono);
-				comando.Parameters.AddWithValue("@dni", (int)cliente.Dni);
-				comando.Parameters.AddWithValue("@debe", cliente.Debe);
+				ADO.Comando.Parameters.Clear();
+				ADO.Comando.CommandText = $"INSERT INTO clientes(nombre, apellido, telefono, dni, debe) VALUES(@nombre, @apellido, @telefono, @dni, @debe)";
+				ADO.Comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
+				ADO.Comando.Parameters.AddWithValue("@apellido", cliente.Apellido);
+				ADO.Comando.Parameters.AddWithValue("@telefono", cliente.Telefono);
+				ADO.Comando.Parameters.AddWithValue("@dni", (int)cliente.Dni);
+				ADO.Comando.Parameters.AddWithValue("@debe", cliente.Debe);
 
-				conexion.Open();
-				comando.ExecuteNonQuery();
+				ADO.Conexion.Open();
+				ADO.Comando.ExecuteNonQuery();
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 				ret = false;
-				throw;
+				throw new Exception(ex.Message);
 			}
 			finally
 			{
-				conexion.Close();
+				ADO.Conexion.Close();
 			}
 
 			return ret;
@@ -104,7 +86,7 @@ namespace Entidades.ADOs
 
 		/// <summary>
 		/// Modifica la fila cuya columna [dni] concuerda con el dato pasado
-		/// por parámetro y establece el valor en la columna [debe] en 0.
+		/// por parámetro y establece el valor en la columna [debe] en el del parámetro.
 		/// </summary>
 		/// <param name="dni">El valor a buscar en la columna [dni].</param>
 		/// <returns>true si pudo modificarlo; false si no.</returns>
@@ -113,22 +95,22 @@ namespace Entidades.ADOs
 			bool ret = true;
 			try
 			{
-				comando.Parameters.Clear();
-				comando.CommandText = $"UPDATE clientes SET debe=@valor WHERE dni=@dni";
-				comando.Parameters.AddWithValue("@dni", (int)dni);
-				comando.Parameters.AddWithValue("@valor", valor);
+				ADO.Comando.Parameters.Clear();
+				ADO.Comando.CommandText = $"UPDATE clientes SET debe=@valor WHERE dni=@dni";
+				ADO.Comando.Parameters.AddWithValue("@dni", (int)dni);
+				ADO.Comando.Parameters.AddWithValue("@valor", valor);
 
-				conexion.Open();
-				comando.ExecuteNonQuery();
+				ADO.Conexion.Open();
+				ADO.Comando.ExecuteNonQuery();
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 				ret = false;
-				throw;
+				throw new Exception(ex.Message);
 			}
 			finally
 			{
-				conexion.Close();
+				ADO.Conexion.Close();
 			}
 
 			return ret;
@@ -150,48 +132,58 @@ namespace Entidades.ADOs
 
 			try
 			{
-				comando.Parameters.Clear();
-				comando.CommandText = $"DELETE FROM clientes WHERE dni=@dni";
-				comando.Parameters.AddWithValue("@dni", dni);
-				conexion.Open();
-				comando.ExecuteNonQuery();
+				ADO.Comando.Parameters.Clear();
+				ADO.Comando.CommandText = $"DELETE FROM clientes WHERE dni=@dni";
+				ADO.Comando.Parameters.AddWithValue("@dni", (int)dni);
+				ADO.Conexion.Open();
+				ADO.Comando.ExecuteNonQuery();
 
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 				ret = false;
-				throw;
+				throw new Exception(ex.Message);
 			}
 			finally
 			{
-				conexion.Close();
+				ADO.Conexion.Close();
 			}
 
 			return ret;
 		}
 
 		/// <summary>
-		/// Elimina todos los valores de la base de datos y escribe los de la lista pasada por parámetros.
+		/// Modifica la fila cuya columna [dni] concuerda con el dato pasado
+		/// por parámetro y establece el valor en la columna [debe] en 0.
 		/// </summary>
-		/// <param name="nuevosClientes">La lista cuyos datos se escriben en la lista.</param>
-		public static void Sobreescribir(List<Cliente> nuevosClientes)
+		/// <param name="cliente">El cliente a modificar.</param>
+		/// <returns>true si pudo modificarlo; false si no.</returns>
+		public static bool ModificarDatos(Cliente cliente)
 		{
+			bool ret = true;
 			try
 			{
-				comando.CommandText = $"DELETE FROM clientes";
-				conexion.Open();
-				comando.ExecuteNonQuery();
+				ADO.Comando.Parameters.Clear();
+				ADO.Comando.CommandText = $"UPDATE clientes SET nombre=@nombre, apellido=@apellido, telefono=@telefono WHERE dni=@dni";
+				ADO.Comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
+				ADO.Comando.Parameters.AddWithValue("@apellido", cliente.Apellido);
+				ADO.Comando.Parameters.AddWithValue("@telefono", cliente.Telefono);
+				ADO.Comando.Parameters.AddWithValue("@dni", (int)cliente.Dni);
 
+				ADO.Conexion.Open();
+				ADO.Comando.ExecuteNonQuery();
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				throw;
+				ret = false;
+				throw new Exception(ex.Message);
 			}
 			finally
 			{
-				conexion.Close();
-				nuevosClientes.ForEach((cliente) => ClienteADO.Agregar(cliente));
+				ADO.Conexion.Close();
 			}
+
+			return ret;
 		}
 	}
 }

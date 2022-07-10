@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Entidades.Excepciones;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Entidades.Excepciones;
 
 namespace Entidades
 {
@@ -18,9 +18,9 @@ namespace Entidades
 
 		}
 		public Cliente(string nombre, string apellido, string telefono, ulong dni)
-			:this(nombre, apellido, telefono, dni, 0)
+			: this(nombre, apellido, telefono, dni, 0)
 		{
-			
+
 		}
 		public Cliente(string nombre, string apellido, string telefono, ulong dni, float debe)
 		{
@@ -37,7 +37,7 @@ namespace Entidades
 			get { return this.nombre; }
 			set
 			{
-				if (!String.IsNullOrEmpty(value))
+				if (!String.IsNullOrWhiteSpace(value))
 				{
 					if (Cliente.CadenaEsValida(value))
 					{
@@ -59,7 +59,7 @@ namespace Entidades
 			get { return this.apellido; }
 			set
 			{
-				if (!String.IsNullOrEmpty(value))
+				if (!String.IsNullOrWhiteSpace(value))
 				{
 					if (Cliente.CadenaEsValida(value))
 					{
@@ -83,10 +83,10 @@ namespace Entidades
 			{
 				if (!String.IsNullOrEmpty(value))
 				{
-					
+
 					if (long.TryParse(value, out _))
 					{
-						if(value.Length < 3 || value.Length > 15)
+						if (value.Length < 3 || value.Length > 15)
 						{
 							throw new TelefonoInvalidoException("El teléfono debe tener entre 3 y 15 dígitos numéricos.");
 						}
@@ -97,7 +97,7 @@ namespace Entidades
 					}
 					else
 					{
-					    throw new TelefonoInvalidoException("El teléfono debe ser sólo números.");
+						throw new TelefonoInvalidoException("El teléfono debe ser sólo números.");
 					}
 				}
 				else
@@ -126,7 +126,7 @@ namespace Entidades
 			get { return this.debe; }
 			set
 			{
-				if(value < 0)
+				if (value < 0)
 				{
 					this.debe = 0;
 					throw new DeudaInvalidaException("No puede existir una deuda negativa.");
@@ -152,26 +152,12 @@ namespace Entidades
 			return sb.ToString();
 		}
 
-		public static Cliente GetClientePorDni(List<Cliente> lista, ulong dni)
-		{
-			Cliente miCliente = null;
-			foreach (Cliente cliente in lista)
-			{
-				if (cliente.Dni == dni)
-				{
-					miCliente = cliente;
-					break;
-				}
-			}
-
-			return miCliente;
-		}
 		public static bool CadenaEsValida(string cadena)
 		{
 			bool ret = true;
 			foreach (char caracter in cadena)
 			{
-				if (!char.IsLetter(caracter))
+				if (!char.IsLetter(caracter) && caracter != ' ')
 				{
 					ret = false;
 					break;
@@ -181,17 +167,27 @@ namespace Entidades
 			return ret;
 		}
 
-		public static bool AgregarCliente(ref List<Cliente> a, Cliente b)
+		public static bool EscribirClientesEnTxt(List<Cliente> clientes)
 		{
-			if (a != b)
+			bool ret = true;
+			StringBuilder sb = new();
+			sb.AppendLine($"Cantidad de clientes: {clientes.Count}");
+			if (clientes.Count != 0)
 			{
-				a.Add(b);
-				return true;
+				sb.AppendLine("========================");
+				clientes.ForEach((item) => sb.AppendLine(item + "\n-----------------\n"));
 			}
-			else
+
+			try
 			{
-				return false;
+				ArchivoTxt.Escribir(sb.ToString(), "ListaDeClientes");
 			}
+			catch (Exception)
+			{
+				ret = false;
+			}
+
+			return ret;
 		}
 
 		public static bool operator ==(Cliente a, Cliente b)
@@ -242,5 +238,6 @@ namespace Entidades
 		{
 			return MostrarDatos(this);
 		}
+
 	}
 }

@@ -5,20 +5,18 @@ using System.Data.SqlClient;
 
 namespace Entidades.ADOs
 {
-	public class ProductoADO
+	public class CarritoADO
 	{
-		/// <summary>
-		/// Lee la base de datos y guarda los valores en una lista del tipo Producto.
-		/// </summary>
-		/// <returns>Una lista con los valores leídos, si no existe la tabla o
-		/// hay algún problema, retorna una lista vacía.</returns>
-		public static List<Producto> ObtenerTodos()
+		public static List<Producto> ObtenerProductosDeVenta(int idVenta)
 		{
 			List<Producto> productos = new List<Producto>();
 
 			try
 			{
-				ADO.Comando.CommandText = "SELECT * FROM productos";
+				ADO.Comando.Parameters.Clear();
+				ADO.Comando.CommandText = "SELECT p.* FROM productos p INNER JOIN carrito c ON c.id_venta=@idVenta AND c.id_producto=p.id";
+				ADO.Comando.Parameters.AddWithValue("@idVenta", idVenta);
+
 				ADO.Conexion.Open();
 				SqlDataReader dataReader = ADO.Comando.ExecuteReader();
 
@@ -49,6 +47,32 @@ namespace Entidades.ADOs
 			}
 
 			return productos;
+		}
+
+		public static bool Agregar(int idVenta, int idProducto)
+		{
+			bool ret = true;
+			try
+			{
+				ADO.Comando.Parameters.Clear();
+				ADO.Comando.CommandText = $"INSERT INTO carrito(id_venta, id_producto) VALUES(@idVenta, @idProducto)";
+				ADO.Comando.Parameters.AddWithValue("@idVenta", idVenta);
+				ADO.Comando.Parameters.AddWithValue("@idProducto", idProducto);
+
+				ADO.Conexion.Open();
+				ADO.Comando.ExecuteNonQuery();
+			}
+			catch (Exception ex)
+			{
+				ret = false;
+				throw new Exception(ex.Message);
+			}
+			finally
+			{
+				ADO.Conexion.Close();
+			}
+
+			return ret;
 		}
 	}
 }

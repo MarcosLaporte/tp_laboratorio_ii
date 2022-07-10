@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCliente xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Cliente>
-    <Nombre>ObiWan</Nombre>
-    <Apellido>Kenobi</Apellido>
-    <Telefono>1232648</Telefono>
-    <Dni>8756456</Dni>
+    <Nombre>Anakin</Nombre>
+    <Apellido>Skywalker</Apellido>
+    <Telefono>165161516</Telefono>
+    <Dni>2301045</Dni>
     <Debe>0</Debe>
   </Cliente>
   <Cliente>
@@ -12,28 +12,35 @@
     <Apellido>Parker</Apellido>
     <Telefono>4781583080</Telefono>
     <Dni>28818884</Dni>
-    <Debe>5233.49</Debe>
+    <Debe>0</Debe>
   </Cliente>
   <Cliente>
     <Nombre>Natasha</Nombre>
     <Apellido>Romanoff</Apellido>
     <Telefono>6623469230</Telefono>
     <Dni>29557358</Dni>
-    <Debe>0</Debe>
+    <Debe>1469.5703</Debe>
   </Cliente>
   <Cliente>
-    <Nombre>Thor</Nombre>
+    <Nombre>Loki</Nombre>
     <Apellido>Odinson</Apellido>
     <Telefono>7758642509</Telefono>
     <Dni>30234289</Dni>
-    <Debe>1263.58</Debe>
+    <Debe>0</Debe>
   </Cliente>
   <Cliente>
-    <Nombre>Jane</Nombre>
-    <Apellido>Foster</Apellido>
+    <Nombre>The Migthy</Nombre>
+    <Apellido>Thor</Apellido>
     <Telefono>1132434159</Telefono>
     <Dni>42587412</Dni>
-    <Debe>1555.28</Debe>
+    <Debe>0</Debe>
+  </Cliente>
+  <Cliente>
+    <Nombre>Obi Wan</Nombre>
+    <Apellido>Kenobi</Apellido>
+    <Telefono>12356987</Telefono>
+    <Dni>44578963</Dni>
+    <Debe>0</Debe>
   </Cliente>
   <Cliente>
     <Nombre>Anthony</Nombre>
@@ -47,27 +54,34 @@
     <Apellido>Barton</Apellido>
     <Telefono>9496175297</Telefono>
     <Dni>45421268</Dni>
-    <Debe>500</Debe>
+    <Debe>796.57007</Debe>
   </Cliente>
   <Cliente>
     <Nombre>Bruce</Nombre>
     <Apellido>Banner</Apellido>
     <Telefono>9133370598</Telefono>
     <Dni>49827708</Dni>
-    <Debe>2946.02</Debe>
+    <Debe>0</Debe>
+  </Cliente>
+  <Cliente>
+    <Nombre>Qui Gon</Nombre>
+    <Apellido>Jinn</Apellido>
+    <Telefono>918917891</Telefono>
+    <Dni>51951981</Dni>
+    <Debe>0</Debe>
   </Cliente>
   <Cliente>
     <Nombre>Steve</Nombre>
     <Apellido>Rogers</Apellido>
     <Telefono>5345408117</Telefono>
     <Dni>58135220</Dni>
-    <Debe>4918.42</Debe>
+    <Debe>0</Debe>
   </Cliente>
   <Cliente>
     <Nombre>Stephen</Nombre>
     <Apellido>Strange</Apellido>
     <Telefono>7363465932</Telefono>
     <Dni>83150463</Dni>
-    <Debe>250</Debe>
+    <Debe>0</Debe>
   </Cliente>
 </ArrayOfCliente>
